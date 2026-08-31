@@ -1,0 +1,1 @@
+First release: flash or screen, adjustable duration, instant or progressive shutdown, pure-black OLED theme.

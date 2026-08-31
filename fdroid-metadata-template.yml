@@ -1,0 +1,27 @@
+# Modèle à copier dans le dépôt fdroiddata sous
+# metadata/org.veilleuse.app.yml lors de la soumission à F-Droid.
+# Voir : https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/
+
+Categories:
+  - System
+License: GPL-3.0-or-later
+AuthorName: Remplacer par votre nom ou pseudonyme
+SourceCode: https://github.com/VOTRE-UTILISATEUR/Veilleuse
+IssueTracker: https://github.com/VOTRE-UTILISATEUR/Veilleuse/issues
+Changelog: https://github.com/VOTRE-UTILISATEUR/Veilleuse/blob/main/CHANGELOG.md
+
+RepoType: git
+Repo: https://github.com/VOTRE-UTILISATEUR/Veilleuse.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    gradle:
+      - yes
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1

@@ -1,0 +1,1 @@
+Première version : flash ou écran, durée réglable, extinction instantanée ou progressive, thème OLED noir pur.

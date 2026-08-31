@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Light source</string>
+    <string name="source_flash">Flash</string>
+    <string name="source_screen">Screen</string>
+
+    <string name="warm_color_title">Warm tint</string>
+    <string name="brightness_title">Brightness</string>
+
+    <string name="duration_title">Duration before shutdown</string>
+    <string name="duration_format">%1$d min</string>
+
+    <string name="extinction_title">Shutdown</string>
+    <string name="extinction_instant">Instant</string>
+    <string name="extinction_progressive">Progressive</string>
+
+    <string name="fade_duration_title">Fade duration</string>
+    <string name="fade_duration_format">%1$d s</string>
+
+    <string name="start_button">Start</string>
+    <string name="stop_button">Stop</string>
+
+    <string name="tap_hint">Tap the screen to show controls</string>
+    <string name="time_remaining_format">%1$02d:%2$02d remaining</string>
+
+    <string name="flash_unavailable">No flash detected on this device. Screen mode selected instead.</string>
+    <string name="fade_flash_unsupported">Progressive fade for the flash is not supported on this device: instant shutdown applied.</string>
+</resources>

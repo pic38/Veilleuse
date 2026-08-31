@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/oled_black">
+
+    <!-- Écran de configuration -->
+    <ScrollView
+        android:id="@+id/setupContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/oled_black"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:text="@string/app_name"
+                android:textColor="@color/accent_amber"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <!-- Source -->
+            <TextView
+                style="@style/SectionLabel"
+                android:text="@string/source_title" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/sourceToggleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSourceFlash"
+                    style="@style/ToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/source_flash" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSourceScreen"
+                    style="@style/ToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/source_screen" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Options écran -->
+            <LinearLayout
+                android:id="@+id/screenOptionsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/colorPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/warmColorLabel"
+                    style="@style/SectionLabel"
+                    android:text="@string/warm_color_title" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/warmColorSlider"
+                    style="@style/AmberSlider"
+                    android:valueFrom="0"
+                    android:valueTo="100"
+                    android:value="40" />
+
+                <TextView
+                    android:id="@+id/brightnessLabel"
+                    style="@style/SectionLabel"
+                    android:text="@string/brightness_title" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/brightnessSlider"
+                    style="@style/AmberSlider"
+                    android:valueFrom="10"
+                    android:valueTo="100"
+                    android:value="60" />
+            </LinearLayout>
+
+            <!-- Durée -->
+            <TextView
+                android:id="@+id/durationLabel"
+                style="@style/SectionLabel"
+                android:text="@string/duration_title" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/durationSlider"
+                style="@style/AmberSlider"
+                android:valueFrom="1"
+                android:valueTo="120"
+                android:stepSize="1"
+                android:value="15" />
+
+            <!-- Extinction -->
+            <TextView
+                style="@style/SectionLabel"
+                android:text="@string/extinction_title" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/extinctionToggleGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExtinctionInstant"
+                    style="@style/ToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/extinction_instant" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnExtinctionProgressive"
+                    style="@style/ToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/extinction_progressive" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <LinearLayout
+                android:id="@+id/fadeDurationGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/fadeDurationLabel"
+                    style="@style/SectionLabel"
+                    android:text="@string/fade_duration_title" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/fadeDurationSlider"
+                    style="@style/AmberSlider"
+                    android:valueFrom="5"
+                    android:valueTo="120"
+                    android:stepSize="5"
+                    android:value="30" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/accent_amber"
+                android:text="@string/start_button"
+                android:textColor="@color/oled_black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="28dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Écran actif (veilleuse) -->
+    <FrameLayout
+        android:id="@+id/runningContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/lightSurface"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/oled_black" />
+
+        <LinearLayout
+            android:id="@+id/controlsOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#B0000000"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/remainingTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStop"
+                android:layout_width="200dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/danger"
+                android:text="@string/stop_button"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                app:cornerRadius="28dp" />
+
+            <TextView
+                android:id="@+id/tapHintText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:alpha="0.6"
+                android:text="@string/tap_hint"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,11 @@
+Veilleuse transforme votre téléphone en veilleuse simple, sans publicité ni traceur.
+
+Fonctionnalités :
+* Deux sources de lumière au choix : le flash de l'appareil photo, ou l'écran avec une teinte chaude réglable.
+* Durée réglable avant extinction automatique (de 1 à 120 minutes).
+* Extinction instantanée ou progressive (fondu), avec durée du fondu réglable.
+* Interface entièrement noir pur (OLED), pour économiser la batterie et ne pas éblouir.
+* En veille, l'écran s'assombrit entièrement ; un simple appui fait réapparaître les commandes (temps restant, bouton Arrêter).
+* Une fois le minuteur écoulé, l'application se ferme d'elle-même pour laisser le téléphone passer en veille normalement.
+
+Aucune permission Internet, aucune télémétrie, code entièrement libre (GPL-3.0).

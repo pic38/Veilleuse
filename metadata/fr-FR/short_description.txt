@@ -1,0 +1,1 @@
+Veilleuse minimaliste OLED, avec flash ou écran, extinction programmée.

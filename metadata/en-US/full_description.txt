@@ -1,0 +1,11 @@
+Veilleuse turns your phone into a simple night light, with no ads and no trackers.
+
+Features:
+* Two light sources: the camera flash, or the screen with an adjustable warm tint.
+* Adjustable duration before automatic shutdown (1 to 120 minutes).
+* Instant or progressive (fade) shutdown, with adjustable fade duration.
+* Fully pure-black (OLED) interface, to save battery and avoid glare.
+* While active, the screen goes fully dark; a single tap brings back the controls (remaining time, Stop button).
+* Once the timer ends, the app closes itself so the phone can go to sleep normally.
+
+No Internet permission, no telemetry, fully free software (GPL-3.0).
