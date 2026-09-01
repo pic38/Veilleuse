@@ -10,8 +10,9 @@
     </style>
 
     <style name="ToggleButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="strokeColor">@color/accent_amber_dim</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="strokeColor">@color/toggle_stroke_color</item>
+        <item name="android:textColor">@color/toggle_text_color</item>
+        <item name="backgroundTint">@color/toggle_background_color</item>
         <item name="rippleColor">@color/accent_amber_dim</item>
         <item name="cornerRadius">18dp</item>
     </style>

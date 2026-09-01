@@ -249,10 +249,18 @@ class MainActivity : AppCompatActivity() {
         controlsOverlay.setOnClickListener { hideControls() }
     }
 
+    /** durationSlider vaut 0 pour le cran supplémentaire "10 s" (test rapide) ;
+     *  sinon sa valeur représente des minutes, comme avant. */
+    private fun durationSecondsFor(sliderValue: Float): Long =
+        if (sliderValue < 1f) 10L else sliderValue.toLong() * 60L
+
     private fun updateDurationLabel(value: Float) {
-        binding.durationLabel.text = "${getString(R.string.duration_title)} — ${
+        val durationText = if (value < 1f) {
+            getString(R.string.fade_duration_format, 10)
+        } else {
             getString(R.string.duration_format, value.toInt())
-        }"
+        }
+        binding.durationLabel.text = "${getString(R.string.duration_title)} — $durationText"
     }
 
     private fun updateFadeLabel(value: Float) {
@@ -263,8 +271,9 @@ class MainActivity : AppCompatActivity() {
 
     /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même
      *  (mais peut désormais aller jusqu'à la durée totale complète). */
-    private fun updateFadeDurationBounds(durationMinutes: Float) = with(binding) {
-        val maxFadeSeconds = (durationMinutes * 60f).coerceAtLeast(fadeDurationSlider.valueFrom)
+    private fun updateFadeDurationBounds(durationSliderValue: Float) = with(binding) {
+        val maxFadeSeconds = durationSecondsFor(durationSliderValue).toFloat()
+            .coerceAtLeast(fadeDurationSlider.valueFrom)
         fadeDurationSlider.valueTo = maxFadeSeconds
         if (fadeDurationSlider.value > maxFadeSeconds) {
             fadeDurationSlider.value = maxFadeSeconds
@@ -293,7 +302,7 @@ class MainActivity : AppCompatActivity() {
     // ---------------------------------------------------------------------
 
     private fun startNightLight() = with(binding) {
-        totalDurationMs = durationSlider.value.toLong() * 60_000L
+        totalDurationMs = durationSecondsFor(durationSlider.value) * 1000L
         fadeDurationMs = if (isProgressive) {
             (fadeDurationSlider.value.toLong() * 1000L).coerceAtMost(totalDurationMs)
         } else 0L

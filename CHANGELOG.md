@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.8.0
+
+- Le texte affiché pendant l'attente de mise en veille est maintenant
+  bien centré (y compris sur plusieurs lignes).
+- Curseur de durée totale : ajout d'un cran "10 s" sous la minute
+  minimum, pratique pour tester rapidement.
+- Les boutons de choix (source, extinction) affichent désormais
+  clairement l'option sélectionnée (fond ambre plein + texte noir) au
+  lieu de rester quasi identiques entre coché/non coché.
+
 ## 1.7.0
 
 - À la fin du minuteur, le bouton Arrêter et l'affichage/masquage des
