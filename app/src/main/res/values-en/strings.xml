@@ -40,4 +40,5 @@
     <string name="format_detailed">Detailed</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Accent color</string>
+    <string name="accent_black_title">Toward black</string>
 </resources>

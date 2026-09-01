@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.15.0
+
+- Écran Réglages : pastille blanche ajoutée en tête de la palette de
+  couleur d'accentuation, et palette étendue de 20 à 25 teintes.
+- Nouveau curseur "Vers le noir" sous la palette : assombrit la
+  couleur d'accentuation choisie (boutons, curseurs, titre) en la
+  mélangeant progressivement vers le noir, indépendamment du curseur
+  de luminosité de la veilleuse.
+
 ## 1.14.0
 
 - Fix du crash signalé en 1.6.0 : le curseur de teinte chaude / de

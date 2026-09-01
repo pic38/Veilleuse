@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity() {
     private var warmFraction = 0.4f
     private var brightnessFraction = 0.6f
     private var accentColor: Int = DEFAULT_ACCENT_COLOR
+    private var accentBlackFraction = 0f
     private var timeFormat: TimeFormat = TimeFormat.COMPACT
 
     private val handler = Handler(Looper.getMainLooper())
@@ -146,6 +147,7 @@ class MainActivity : AppCompatActivity() {
         brightnessFraction = prefs.getFloat("brightness_fraction", 0.6f)
         isProgressive = prefs.getBoolean("progressive", false)
         accentColor = prefs.getInt("accent_color", DEFAULT_ACCENT_COLOR)
+        accentBlackFraction = prefs.getFloat("accent_black_fraction", 0f)
         timeFormat = TimeFormat.entries.firstOrNull { it.name == prefs.getString("time_format", null) }
             ?: TimeFormat.COMPACT
     }
@@ -166,7 +168,7 @@ class MainActivity : AppCompatActivity() {
     // ---------------------------------------------------------------------
 
     private fun setupUi() = with(binding) {
-        applyAccentColor(accentColor)
+        applyAccentColor(effectiveAccentColor())
         populateColorSwatches()
         timeFormatToggleGroup.check(
             when (timeFormat) {
@@ -195,6 +197,8 @@ class MainActivity : AppCompatActivity() {
             .coerceIn(warmColorSlider.valueFrom, warmColorSlider.valueTo)
         brightnessSlider.value = (brightnessFraction * 100f).roundToInt().toFloat()
             .coerceIn(brightnessSlider.valueFrom, brightnessSlider.valueTo)
+        accentBlackSlider.value = (accentBlackFraction * 100f).roundToInt().toFloat()
+            .coerceIn(accentBlackSlider.valueFrom, accentBlackSlider.valueTo)
 
         updateDurationLabel(durationSlider.value)
         updateFadeDurationBounds(durationSlider.value) // met aussi à jour le label du fondu
@@ -228,6 +232,11 @@ class MainActivity : AppCompatActivity() {
         }
         brightnessSlider.addOnChangeListener { _, value, _ ->
             brightnessFraction = value / 100f
+        }
+        accentBlackSlider.addOnChangeListener { _, value, _ ->
+            accentBlackFraction = value / 100f
+            prefs.edit().putFloat("accent_black_fraction", accentBlackFraction).apply()
+            applyAccentColor(effectiveAccentColor())
         }
 
         btnStart.setOnClickListener {
@@ -342,7 +351,7 @@ class MainActivity : AppCompatActivity() {
             button.rippleColor = rippleStates
         }
 
-        listOf(durationSlider, fadeDurationSlider, warmColorSlider, brightnessSlider).forEach { slider ->
+        listOf(durationSlider, fadeDurationSlider, warmColorSlider, brightnessSlider, accentBlackSlider).forEach { slider ->
             slider.trackActiveTintList = ColorStateList.valueOf(color)
             slider.thumbTintList = ColorStateList.valueOf(color)
             slider.haloTintList = ColorStateList.valueOf(dim)
@@ -352,8 +361,13 @@ class MainActivity : AppCompatActivity() {
         appTitleText.setTextColor(color)
     }
 
-    /** Palette de [ACCENT_SWATCH_COUNT] couleurs réparties sur toute la teinte (façon
-     *  Image Toolbox) : ronds défilables horizontalement, celui sélectionné est cerclé. */
+    /** Couleur d'accentuation réellement appliquée : [accentColor] mélangé vers le noir
+     *  selon [accentBlackFraction] (curseur "vers le noir" de l'écran Réglages). */
+    private fun effectiveAccentColor(color: Int = accentColor): Int =
+        ColorUtils.blendARGB(color, Color.BLACK, accentBlackFraction)
+
+    /** Palette de couleurs réparties sur toute la teinte (façon Image Toolbox), précédée
+     *  du blanc : ronds défilables horizontalement, celui sélectionné est cerclé. */
     private fun populateColorSwatches(): Unit = with(binding) {
         val container = colorSwatchContainer
         container.removeAllViews()
@@ -361,15 +375,20 @@ class MainActivity : AppCompatActivity() {
         val marginPx = (8 * resources.displayMetrics.density).toInt()
         val strokePx = (3 * resources.displayMetrics.density).toInt()
 
-        for (i in 0 until ACCENT_SWATCH_COUNT) {
+        val swatchColors = listOf(Color.WHITE) + (0 until ACCENT_SWATCH_COUNT).map { i ->
             val hue = i * 360f / ACCENT_SWATCH_COUNT
-            val swatchColor = Color.HSVToColor(floatArrayOf(hue, 0.85f, 0.95f))
+            Color.HSVToColor(floatArrayOf(hue, 0.85f, 0.95f))
+        }
+
+        for (swatchColor in swatchColors) {
             val selected = swatchColor == accentColor
 
             val swatchDrawable = GradientDrawable().apply {
                 shape = GradientDrawable.OVAL
                 setColor(swatchColor)
-                if (selected) setStroke(strokePx, Color.WHITE)
+                // Le blanc a besoin d'un anneau de sélection sombre : un anneau blanc
+                // serait invisible sur une pastille blanche.
+                if (selected) setStroke(strokePx, if (swatchColor == Color.WHITE) Color.BLACK else Color.WHITE)
             }
 
             val swatch = View(this@MainActivity).apply {
@@ -381,7 +400,7 @@ class MainActivity : AppCompatActivity() {
                 setOnClickListener {
                     accentColor = swatchColor
                     prefs.edit().putInt("accent_color", swatchColor).apply()
-                    applyAccentColor(swatchColor)
+                    applyAccentColor(effectiveAccentColor())
                     populateColorSwatches()
                 }
             }
@@ -720,7 +739,7 @@ class MainActivity : AppCompatActivity() {
         const val FADE_TICK_MS_FLASH = 50L
         const val DITHER_STEPS = 2
         const val FADE_DURATION_STEPS = 100
-        const val ACCENT_SWATCH_COUNT = 20
+        const val ACCENT_SWATCH_COUNT = 25
         const val DEFAULT_ACCENT_COLOR = 0xFFFFB300.toInt() // = @color/accent_amber
     }
 }
