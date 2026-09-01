@@ -204,11 +204,10 @@ class MainActivity : AppCompatActivity() {
         }"
     }
 
-    /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même. */
+    /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même
+     *  (mais peut désormais aller jusqu'à la durée totale complète). */
     private fun updateFadeDurationBounds(durationMinutes: Float) = with(binding) {
-        val maxFadeSeconds = (durationMinutes * 60f)
-            .coerceAtMost(MAX_FADE_SECONDS)
-            .coerceAtLeast(fadeDurationSlider.valueFrom)
+        val maxFadeSeconds = (durationMinutes * 60f).coerceAtLeast(fadeDurationSlider.valueFrom)
         fadeDurationSlider.valueTo = maxFadeSeconds
         if (fadeDurationSlider.value > maxFadeSeconds) {
             fadeDurationSlider.value = maxFadeSeconds
@@ -239,6 +238,8 @@ class MainActivity : AppCompatActivity() {
         setupContainer.visibility = View.GONE
         runningContainer.visibility = View.VISIBLE
         controlsOverlay.visibility = View.GONE
+        waitingForSleepText.visibility = View.GONE
+        lightSurface.setOnClickListener { showControls() }
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         enterImmersiveMode()
@@ -283,6 +284,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val duration = remainingMs.coerceAtLeast(1L)
+        val tickMs = if (useFlash && hasFlash) FADE_TICK_MS_FLASH else FADE_TICK_MS_SCREEN
         fadeStartElapsedMs = SystemClock.elapsedRealtime()
         fadeTickIndex = 0
 
@@ -293,7 +295,7 @@ class MainActivity : AppCompatActivity() {
                 applyFadeProgress(fraction)
                 fadeTickIndex++
                 if (fraction < 1f) {
-                    handler.postDelayed(this, FADE_TICK_MS)
+                    handler.postDelayed(this, tickMs)
                 }
             }
         }
@@ -350,6 +352,8 @@ class MainActivity : AppCompatActivity() {
             // plein écran noir et on attend que le téléphone s'endorme réellement avant
             // de fermer l'app, sinon le launcher s'affiche en pleine luminosité le temps
             // que l'extinction automatique du système se déclenche.
+            binding.lightSurface.setOnClickListener(null)
+            binding.waitingForSleepText.visibility = View.VISIBLE
             waitForScreenOffThenClose()
         } else {
             exitImmersiveMode()
@@ -497,8 +501,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private companion object {
-        const val MAX_FADE_SECONDS = 120f
-        const val FADE_TICK_MS = 50L
-        const val DITHER_STEPS = 10
+        const val FADE_TICK_MS_SCREEN = 5L
+        const val FADE_TICK_MS_FLASH = 50L
+        const val DITHER_STEPS = 2
     }
 }

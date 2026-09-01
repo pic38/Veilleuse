@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.3.0
+
+- À la fin du minuteur, un texte discret indique que l'app attend la
+  mise en veille automatique du téléphone (réglages Android) avant de
+  se fermer ; le tap pour rappeler les commandes est aussi désactivé
+  à ce moment-là.
+- Fondu écran : fréquence de mise à jour x10 (5 ms au lieu de 50 ms)
+  pour une transition encore plus lisse.
+- Fondu flash : dithering réduit d'un facteur 5 (2 paliers de
+  simulation au lieu de 10) suite aux retours terrain.
+- Le curseur de durée du fondu peut désormais aller jusqu'à la durée
+  totale complète de la veilleuse (le plafond de 120 s est supprimé).
+
 ## 1.2.0
 
 - Curseur de luminosité étendu de 0 à 100 (au lieu de 10-100) : à 0,
