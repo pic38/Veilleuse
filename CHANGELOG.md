@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.9.0
+
+- Durée du fondu affichée en minutes (1 décimale) au-delà de 60 s, au
+  lieu de secondes brutes.
+- Curseur de fondu : toujours 100 crans répartis sur toute sa plage,
+  quelle que soit la durée totale choisie (le pas s'ajuste
+  automatiquement au lieu d'être fixé à 5 s).
+- "Instantanée" renommé en "Immédiate" (extinction).
+- Le texte affiché une fois les commandes révélées dit maintenant
+  "Touchez l'écran pour masquer" (au lieu de "pour afficher", incohérent
+  puisqu'il n'apparaît qu'après le premier tap).
+
 ## 1.8.0
 
 - Le texte affiché pendant l'attente de mise en veille est maintenant

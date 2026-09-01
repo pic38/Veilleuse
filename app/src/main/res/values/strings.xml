@@ -13,16 +13,17 @@
     <string name="duration_format">%1$d min</string>
 
     <string name="extinction_title">Extinction</string>
-    <string name="extinction_instant">Instantanée</string>
+    <string name="extinction_instant">Immédiate</string>
     <string name="extinction_progressive">Progressive</string>
 
     <string name="fade_duration_title">Durée du fondu</string>
     <string name="fade_duration_format">%1$d s</string>
+    <string name="fade_duration_minutes_format">%1$.1f min</string>
 
     <string name="start_button">Lancer</string>
     <string name="stop_button">Arrêter</string>
 
-    <string name="tap_hint">Touchez l\'écran pour afficher les commandes</string>
+    <string name="tap_hint">Touchez l\'écran pour masquer</string>
     <string name="time_remaining_format">%1$02d:%2$02d restantes</string>
 
     <string name="flash_unavailable">Aucun flash détecté sur cet appareil. Le mode Écran a été sélectionné.</string>

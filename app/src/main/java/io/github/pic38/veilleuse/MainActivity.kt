@@ -209,8 +209,7 @@ class MainActivity : AppCompatActivity() {
         brightnessSlider.value = brightnessFraction * 100f
 
         updateDurationLabel(durationSlider.value)
-        updateFadeDurationBounds(durationSlider.value)
-        updateFadeLabel(fadeDurationSlider.value)
+        updateFadeDurationBounds(durationSlider.value) // met aussi à jour le label du fondu
         updateColorPreview()
         versionText.text = getString(R.string.version_format, appVersionName())
 
@@ -264,21 +263,33 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateFadeLabel(value: Float) {
-        binding.fadeDurationLabel.text = "${getString(R.string.fade_duration_title)} — ${
+        val fadeText = if (value >= 60f) {
+            getString(R.string.fade_duration_minutes_format, value / 60f)
+        } else {
             getString(R.string.fade_duration_format, value.toInt())
-        }"
+        }
+        binding.fadeDurationLabel.text = "${getString(R.string.fade_duration_title)} — $fadeText"
     }
 
-    /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même
-     *  (mais peut désormais aller jusqu'à la durée totale complète). */
+    /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même (mais peut
+     *  désormais aller jusqu'à la durée totale complète), avec toujours [FADE_DURATION_STEPS]
+     *  crans répartis sur toute la plage, quelle que soit sa largeur. */
     private fun updateFadeDurationBounds(durationSliderValue: Float) = with(binding) {
         val maxFadeSeconds = durationSecondsFor(durationSliderValue).toFloat()
             .coerceAtLeast(fadeDurationSlider.valueFrom)
+        val stepSize = (maxFadeSeconds - fadeDurationSlider.valueFrom) / (FADE_DURATION_STEPS - 1)
+
         fadeDurationSlider.valueTo = maxFadeSeconds
-        if (fadeDurationSlider.value > maxFadeSeconds) {
-            fadeDurationSlider.value = maxFadeSeconds
-            updateFadeLabel(maxFadeSeconds)
-        }
+        fadeDurationSlider.stepSize = stepSize
+
+        // Réaligne la valeur courante sur la nouvelle grille de pas (obligatoire : Slider
+        // exige que value soit un multiple exact de stepSize par rapport à valueFrom).
+        val stepIndex = ((fadeDurationSlider.value - fadeDurationSlider.valueFrom) / stepSize)
+            .roundToInt()
+            .coerceIn(0, FADE_DURATION_STEPS - 1)
+        fadeDurationSlider.value = (fadeDurationSlider.valueFrom + stepIndex * stepSize)
+            .coerceIn(fadeDurationSlider.valueFrom, maxFadeSeconds)
+        updateFadeLabel(fadeDurationSlider.value)
     }
 
     private fun appVersionName(): String =
@@ -579,5 +590,6 @@ class MainActivity : AppCompatActivity() {
         const val FADE_TICK_MS_SCREEN = 5L
         const val FADE_TICK_MS_FLASH = 50L
         const val DITHER_STEPS = 2
+        const val FADE_DURATION_STEPS = 100
     }
 }
