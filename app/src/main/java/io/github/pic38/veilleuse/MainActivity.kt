@@ -1,9 +1,9 @@
 package io.github.pic38.veilleuse
 
-import android.animation.ValueAnimator
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraManager
@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.os.SystemClock
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -33,8 +34,9 @@ class MainActivity : AppCompatActivity() {
     private var supportsVariableTorch = false
 
     private var countDownTimer: CountDownTimer? = null
-    private var fadeAnimator: ValueAnimator? = null
+    private var fadeRunnable: Runnable? = null
     private var fadeStarted = false
+    private var fadeStartElapsedMs: Long = 0
 
     private var totalDurationMs: Long = 0
     private var fadeDurationMs: Long = 0
@@ -52,6 +54,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes = window.attributes.apply {
+                layoutInDisplayCutoutMode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+                else
+                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+            }
+        }
 
         prefs = getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
         detectFlash()
@@ -135,6 +145,7 @@ class MainActivity : AppCompatActivity() {
         brightnessSlider.value = brightnessFraction * 100f
 
         updateDurationLabel(durationSlider.value)
+        updateFadeDurationBounds(durationSlider.value)
         updateFadeLabel(fadeDurationSlider.value)
         updateColorPreview()
 
@@ -150,7 +161,10 @@ class MainActivity : AppCompatActivity() {
             fadeDurationGroup.visibility = if (isProgressive) View.VISIBLE else View.GONE
         }
 
-        durationSlider.addOnChangeListener { _, value, _ -> updateDurationLabel(value) }
+        durationSlider.addOnChangeListener { _, value, _ ->
+            updateDurationLabel(value)
+            updateFadeDurationBounds(value)
+        }
         fadeDurationSlider.addOnChangeListener { _, value, _ -> updateFadeLabel(value) }
 
         warmColorSlider.addOnChangeListener { _, value, _ ->
@@ -182,8 +196,25 @@ class MainActivity : AppCompatActivity() {
         }"
     }
 
+    /** Le fondu ne doit jamais durer plus longtemps que la veilleuse elle-même. */
+    private fun updateFadeDurationBounds(durationMinutes: Float) = with(binding) {
+        val maxFadeSeconds = (durationMinutes * 60f)
+            .coerceAtMost(MAX_FADE_SECONDS)
+            .coerceAtLeast(fadeDurationSlider.valueFrom)
+        fadeDurationSlider.valueTo = maxFadeSeconds
+        if (fadeDurationSlider.value > maxFadeSeconds) {
+            fadeDurationSlider.value = maxFadeSeconds
+            updateFadeLabel(maxFadeSeconds)
+        }
+    }
+
     private fun updateColorPreview() {
-        binding.colorPreview.setBackgroundColor(computeWarmColor(warmFraction))
+        val drawable = binding.colorPreview.background as? GradientDrawable
+            ?: GradientDrawable().also {
+                it.cornerRadius = 20f * resources.displayMetrics.density
+                binding.colorPreview.background = it
+            }
+        drawable.setColor(computeWarmColor(warmFraction))
     }
 
     // ---------------------------------------------------------------------
@@ -227,32 +258,53 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                finishNightLight()
+                finishNightLight(closeApp = true)
             }
         }.start()
     }
 
+    /** Fondu piloté manuellement via SystemClock plutôt qu'un ValueAnimator : certains
+     *  appareils/réglages système mettent l'échelle de durée d'animation à 0, ce qui rend
+     *  un ValueAnimator instantané (coupure nette au lieu d'un fondu). */
     private fun startFade(remainingMs: Long) {
         fadeStarted = true
-        val duration = remainingMs.coerceAtLeast(1L)
 
-        if (useFlash && hasFlash) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && supportsVariableTorch) {
-                fadeAnimator = ValueAnimator.ofInt(maxTorchStrength, 1).apply {
-                    this.duration = duration
-                    addUpdateListener { setTorchStrength(it.animatedValue as Int) }
-                    start()
+        if (useFlash && hasFlash && !supportsVariableTorch) {
+            Toast.makeText(this, R.string.fade_flash_unsupported, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val duration = remainingMs.coerceAtLeast(1L)
+        fadeStartElapsedMs = SystemClock.elapsedRealtime()
+
+        val tick = object : Runnable {
+            override fun run() {
+                val elapsed = SystemClock.elapsedRealtime() - fadeStartElapsedMs
+                val fraction = (elapsed.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
+                applyFadeProgress(fraction)
+                if (fraction < 1f) {
+                    handler.postDelayed(this, FADE_TICK_MS)
                 }
-            } else {
-                Toast.makeText(this, R.string.fade_flash_unsupported, Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            fadeAnimator = ValueAnimator.ofFloat(1f, 0f).apply {
-                this.duration = duration
-                addUpdateListener { binding.lightSurface.alpha = it.animatedValue as Float }
-                start()
             }
         }
+        fadeRunnable = tick
+        handler.post(tick)
+    }
+
+    private fun applyFadeProgress(fraction: Float) {
+        if (useFlash && hasFlash) {
+            val level = (maxTorchStrength - fraction * (maxTorchStrength - 1))
+                .toInt()
+                .coerceIn(1, maxTorchStrength)
+            setTorchStrength(level)
+        } else {
+            binding.lightSurface.alpha = 1f - fraction
+        }
+    }
+
+    private fun cancelFade() {
+        fadeRunnable?.let { handler.removeCallbacks(it) }
+        fadeRunnable = null
     }
 
     /** Arrête la veilleuse. Si [returnToSetup] est vrai (arrêt manuel), revient à l'écran de configuration.
@@ -264,8 +316,7 @@ class MainActivity : AppCompatActivity() {
     private fun finishNightLight(closeApp: Boolean = false) {
         countDownTimer?.cancel()
         countDownTimer = null
-        fadeAnimator?.cancel()
-        fadeAnimator = null
+        cancelFade()
 
         setTorch(false)
         binding.lightSurface.alpha = 1f
@@ -391,7 +442,12 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         countDownTimer?.cancel()
-        fadeAnimator?.cancel()
+        cancelFade()
         setTorch(false)
+    }
+
+    private companion object {
+        const val MAX_FADE_SECONDS = 120f
+        const val FADE_TICK_MS = 50L
     }
 }
