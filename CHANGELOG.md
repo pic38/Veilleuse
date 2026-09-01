@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.10.0
+
+- Tous les temps affichés (durée totale, durée du fondu, temps
+  restant pendant la veilleuse) utilisent désormais un format unique
+  "XX h XX min XX s" au lieu de formats différents selon l'écran
+  (minutes, secondes brutes, minutes décimales, MM:SS).
+
 ## 1.9.0
 
 - Durée du fondu affichée en minutes (1 décimale) au-delà de 60 s, au

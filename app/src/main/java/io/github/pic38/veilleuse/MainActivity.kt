@@ -254,20 +254,12 @@ class MainActivity : AppCompatActivity() {
         if (sliderValue < 1f) 10L else sliderValue.toLong() * 60L
 
     private fun updateDurationLabel(value: Float) {
-        val durationText = if (value < 1f) {
-            getString(R.string.fade_duration_format, 10)
-        } else {
-            getString(R.string.duration_format, value.toInt())
-        }
+        val durationText = formatHms(durationSecondsFor(value))
         binding.durationLabel.text = "${getString(R.string.duration_title)} — $durationText"
     }
 
     private fun updateFadeLabel(value: Float) {
-        val fadeText = if (value >= 60f) {
-            getString(R.string.fade_duration_minutes_format, value / 60f)
-        } else {
-            getString(R.string.fade_duration_format, value.toInt())
-        }
+        val fadeText = formatHms(value.roundToInt().toLong())
         binding.fadeDurationLabel.text = "${getString(R.string.fade_duration_title)} — $fadeText"
     }
 
@@ -556,11 +548,16 @@ class MainActivity : AppCompatActivity() {
     // Divers
     // ---------------------------------------------------------------------
 
+    private fun formatHms(totalSeconds: Long): String {
+        val h = totalSeconds / 3600
+        val m = (totalSeconds % 3600) / 60
+        val s = totalSeconds % 60
+        return getString(R.string.hms_format, h, m, s)
+    }
+
     private fun formatRemaining(ms: Long): String {
         val totalSeconds = (ms / 1000).coerceAtLeast(0)
-        val minutes = totalSeconds / 60
-        val seconds = totalSeconds % 60
-        return getString(R.string.time_remaining_format, minutes, seconds)
+        return getString(R.string.time_remaining_format, formatHms(totalSeconds))
     }
 
     override fun onBackPressed() {
