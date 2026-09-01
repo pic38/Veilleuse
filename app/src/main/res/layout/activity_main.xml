@@ -320,7 +320,7 @@
                 android:id="@+id/accentBlackSlider"
                 style="@style/AmberSlider"
                 android:valueFrom="0"
-                android:valueTo="100"
+                android:valueTo="75"
                 android:stepSize="1"
                 android:value="0" />
 

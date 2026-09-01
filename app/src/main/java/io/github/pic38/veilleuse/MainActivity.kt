@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         brightnessFraction = prefs.getFloat("brightness_fraction", 0.6f)
         isProgressive = prefs.getBoolean("progressive", false)
         accentColor = prefs.getInt("accent_color", DEFAULT_ACCENT_COLOR)
-        accentBlackFraction = prefs.getFloat("accent_black_fraction", 0f)
+        accentBlackFraction = prefs.getFloat("accent_black_fraction", 0f).coerceAtMost(MAX_ACCENT_BLACK_FRACTION)
         timeFormat = TimeFormat.entries.firstOrNull { it.name == prefs.getString("time_format", null) }
             ?: TimeFormat.COMPACT
     }
@@ -740,6 +740,9 @@ class MainActivity : AppCompatActivity() {
         const val DITHER_STEPS = 2
         const val FADE_DURATION_STEPS = 100
         const val ACCENT_SWATCH_COUNT = 25
+        // Doit rester cohérent avec android:valueTo du accentBlackSlider (activity_main.xml) :
+        // au-delà, la couleur d'accentuation devient trop sombre pour rester lisible.
+        const val MAX_ACCENT_BLACK_FRACTION = 0.75f
         const val DEFAULT_ACCENT_COLOR = 0xFFFFB300.toInt() // = @color/accent_amber
     }
 }

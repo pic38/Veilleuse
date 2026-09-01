@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.15.1
+
+- Le curseur "Vers le noir" est plafonné à 75% (au lieu de 100%) pour
+  que la couleur d'accentuation reste toujours lisible.
+
 ## 1.15.0
 
 - Écran Réglages : pastille blanche ajoutée en tête de la palette de
