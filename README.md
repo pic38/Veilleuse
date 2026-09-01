@@ -27,6 +27,13 @@ Prérequis : JDK 17, Android SDK (compileSdk 34), connexion Internet pour
 télécharger les dépendances Gradle/AndroidX (aucune dépendance
 propriétaire, aucun service Google Play).
 
+Si le JDK par défaut de la machine n'est pas la version 17 (le
+compilateur Kotlin embarqué dans Gradle peut planter avec des JDK trop
+récents), pointer Gradle vers un JDK 17 sans modifier le dépôt : ajouter
+`org.gradle.java.home=/chemin/vers/jdk17` dans le `gradle.properties`
+global de l'utilisateur (`~/.gradle/gradle.properties`), ou définir la
+variable d'environnement `JAVA_HOME`.
+
 Le binaire `gradle-wrapper.jar` n'est pas versionné dans ce dépôt.
 Deux options :
 
