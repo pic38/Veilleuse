@@ -1,6 +1,9 @@
 package io.github.pic38.veilleuse
 
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -17,10 +20,13 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import io.github.pic38.veilleuse.databinding.ActivityMainBinding
+import kotlin.math.floor
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     private var fadeRunnable: Runnable? = null
     private var fadeStarted = false
     private var fadeStartElapsedMs: Long = 0
+    private var fadeTickIndex = 0
+    private var screenOffReceiver: BroadcastReceiver? = null
 
     private var totalDurationMs: Long = 0
     private var fadeDurationMs: Long = 0
@@ -242,7 +250,7 @@ class MainActivity : AppCompatActivity() {
                 setTorchStrength(maxTorchStrength)
             }
         } else {
-            lightSurface.alpha = 1f
+            lightSurface.alpha = brightnessFraction
             lightSurface.setBackgroundColor(computeWarmColor(warmFraction))
             window.attributes = window.attributes.apply { screenBrightness = brightnessFraction }
         }
@@ -276,12 +284,14 @@ class MainActivity : AppCompatActivity() {
 
         val duration = remainingMs.coerceAtLeast(1L)
         fadeStartElapsedMs = SystemClock.elapsedRealtime()
+        fadeTickIndex = 0
 
         val tick = object : Runnable {
             override fun run() {
                 val elapsed = SystemClock.elapsedRealtime() - fadeStartElapsedMs
                 val fraction = (elapsed.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
                 applyFadeProgress(fraction)
+                fadeTickIndex++
                 if (fraction < 1f) {
                     handler.postDelayed(this, FADE_TICK_MS)
                 }
@@ -291,14 +301,20 @@ class MainActivity : AppCompatActivity() {
         handler.post(tick)
     }
 
+    /** Le nombre de paliers physiques de la torche est limité par le matériel (souvent
+     *  seulement quelques niveaux). On simule ~[DITHER_STEPS] fois plus de paliers perçus
+     *  en alternant rapidement entre les deux niveaux matériels voisins (dithering temporel :
+     *  l'œil moyenne les alternances rapides en une luminosité intermédiaire). */
     private fun applyFadeProgress(fraction: Float) {
         if (useFlash && hasFlash) {
-            val level = (maxTorchStrength - fraction * (maxTorchStrength - 1))
-                .toInt()
-                .coerceIn(1, maxTorchStrength)
+            val target = maxTorchStrength - fraction * (maxTorchStrength - 1)
+            val lower = floor(target).toInt().coerceIn(1, maxTorchStrength)
+            val upper = (lower + 1).coerceAtMost(maxTorchStrength)
+            val onSteps = ((target - lower).coerceIn(0f, 1f) * DITHER_STEPS).roundToInt()
+            val level = if (fadeTickIndex % DITHER_STEPS < onSteps) upper else lower
             setTorchStrength(level)
         } else {
-            binding.lightSurface.alpha = 1f - fraction
+            binding.lightSurface.alpha = brightnessFraction * (1f - fraction)
         }
     }
 
@@ -320,21 +336,54 @@ class MainActivity : AppCompatActivity() {
 
         setTorch(false)
         binding.lightSurface.alpha = 1f
+        binding.lightSurface.setBackgroundColor(Color.BLACK)
         window.attributes = window.attributes.apply {
             screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
         }
 
         cancelHideControls()
         window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        exitImmersiveMode()
+        binding.controlsOverlay.visibility = View.GONE
 
         if (closeApp) {
-            finishAffinity()
+            // Ne pas révéler l'écran d'accueil (lumineux) tout de suite : on reste en
+            // plein écran noir et on attend que le téléphone s'endorme réellement avant
+            // de fermer l'app, sinon le launcher s'affiche en pleine luminosité le temps
+            // que l'extinction automatique du système se déclenche.
+            waitForScreenOffThenClose()
         } else {
+            exitImmersiveMode()
             binding.runningContainer.visibility = View.GONE
-            binding.controlsOverlay.visibility = View.GONE
             binding.setupContainer.visibility = View.VISIBLE
         }
+    }
+
+    private fun waitForScreenOffThenClose() {
+        if (screenOffReceiver != null) return
+        val receiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                unregisterScreenOffReceiver()
+                finishAffinity()
+            }
+        }
+        screenOffReceiver = receiver
+        ContextCompat.registerReceiver(
+            this,
+            receiver,
+            IntentFilter(Intent.ACTION_SCREEN_OFF),
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
+    }
+
+    private fun unregisterScreenOffReceiver() {
+        screenOffReceiver?.let {
+            try {
+                unregisterReceiver(it)
+            } catch (_: IllegalArgumentException) {
+                // Déjà désenregistré.
+            }
+        }
+        screenOffReceiver = null
     }
 
     // ---------------------------------------------------------------------
@@ -444,10 +493,12 @@ class MainActivity : AppCompatActivity() {
         countDownTimer?.cancel()
         cancelFade()
         setTorch(false)
+        unregisterScreenOffReceiver()
     }
 
     private companion object {
         const val MAX_FADE_SECONDS = 120f
         const val FADE_TICK_MS = 50L
+        const val DITHER_STEPS = 10
     }
 }
