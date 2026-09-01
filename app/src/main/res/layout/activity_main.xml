@@ -193,6 +193,12 @@
                 android:textColor="@color/text_secondary"
                 android:textSize="11sp" />
 
+            <!-- Remonte le bloc de contrôles d'une hauteur de bouton par rapport au bas
+                 de l'écran (le Space à poids 1 plus haut absorbe le reste de l'espace). -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="56dp" />
+
         </LinearLayout>
     </ScrollView>
 

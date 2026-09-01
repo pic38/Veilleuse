@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0
+
+- Fix : le numéro de version (et le bas du bouton Lancer) pouvait être
+  masqué par la barre de navigation système sur l'écran de réglages,
+  qui passait sous les barres système comme l'écran veilleuse. Seul
+  l'écran veilleuse actif reste désormais edge-to-edge ; l'écran de
+  réglages respecte les insets système (padding haut/bas).
+- Bloc de contrôles remonté d'une hauteur de bouton par rapport au bas
+  de l'écran.
+
 ## 1.4.0
 
 - Titre de l'écran de réglages descendu (marge augmentée d'environ sa

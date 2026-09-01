@@ -22,6 +22,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -70,6 +71,14 @@ class MainActivity : AppCompatActivity() {
                 else
                     WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
             }
+        }
+
+        // L'écran de réglages (non immersif) ne doit pas passer sous les barres système :
+        // seul l'écran "veilleuse" actif doit être edge-to-edge (voir enter/exitImmersiveMode).
+        ViewCompat.setOnApplyWindowInsetsListener(binding.setupContainer) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(view.paddingLeft, bars.top, view.paddingRight, bars.bottom)
+            insets
         }
 
         prefs = getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
