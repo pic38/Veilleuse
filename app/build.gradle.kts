@@ -11,8 +11,8 @@ android {
         applicationId = "io.github.pic38.veilleuse"
         minSdk = 26
         targetSdk = 34
-        versionCode = 12
-        versionName = "1.11.0"
+        versionCode = 13
+        versionName = "1.12.0"
     }
 
     buildTypes {

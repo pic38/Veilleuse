@@ -225,6 +225,9 @@ class MainActivity : AppCompatActivity() {
             fadeDurationGroup.visibility = if (isProgressive) View.VISIBLE else View.GONE
         }
 
+        durationSlider.setLabelFormatter { value -> formatHms(durationSecondsFor(value)) }
+        fadeDurationSlider.setLabelFormatter { value -> formatHms(value.roundToInt().toLong()) }
+
         durationSlider.addOnChangeListener { _, value, _ ->
             updateDurationLabel(value)
             updateFadeDurationBounds(value)
@@ -562,9 +565,24 @@ class MainActivity : AppCompatActivity() {
         return parts.joinToString(" ")
     }
 
+    /** Pour le compte à rebours : ne masque que les unités nulles de poids fort (à gauche).
+     *  Une fois la première unité non nulle atteinte, tout ce qui suit reste affiché même
+     *  à zéro (ex. "1 s", "1 min 0 s", "1 h 0 min 0 s"). */
+    private fun formatCountdown(totalSeconds: Long): String {
+        val h = totalSeconds / 3600
+        val m = (totalSeconds % 3600) / 60
+        val s = totalSeconds % 60
+
+        val parts = mutableListOf<String>()
+        if (h > 0) parts += getString(R.string.hms_hours, h)
+        if (h > 0 || m > 0) parts += getString(R.string.hms_minutes, m)
+        parts += getString(R.string.hms_seconds, s)
+        return parts.joinToString(" ")
+    }
+
     private fun formatRemaining(ms: Long): String {
         val totalSeconds = (ms / 1000).coerceAtLeast(0)
-        return getString(R.string.time_remaining_format, formatHms(totalSeconds))
+        return getString(R.string.time_remaining_format, formatCountdown(totalSeconds))
     }
 
     override fun onBackPressed() {

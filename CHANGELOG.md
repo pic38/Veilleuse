@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.12.0
+
+- Compte à rebours (temps restant pendant la veilleuse) : format
+  distinct qui ne masque que les unités nulles de poids fort ; une
+  fois la première unité non nulle atteinte, tout le reste s'affiche
+  même à zéro ("1 s", "1 min 0 s", "1 h 0 min 0 s").
+- Les curseurs de durée totale et de fondu affichent le temps déjà
+  formaté ("15 min", "1 h 30 min"…) dans leur bulle pendant le
+  glissement, au lieu de la valeur brute.
+
 ## 1.11.0
 
 - Format de temps : les unités à zéro sont masquées (ex. "15 min" au
