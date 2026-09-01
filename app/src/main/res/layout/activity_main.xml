@@ -46,6 +46,7 @@
                     android:id="@+id/btnSourceFlash"
                     style="@style/ToggleButton"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/source_flash" />
 
@@ -53,6 +54,7 @@
                     android:id="@+id/btnSourceScreen"
                     style="@style/ToggleButton"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/source_screen" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
@@ -127,6 +129,7 @@
                     android:id="@+id/btnExtinctionInstant"
                     style="@style/ToggleButton"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/extinction_instant" />
 
@@ -134,6 +137,7 @@
                     android:id="@+id/btnExtinctionProgressive"
                     style="@style/ToggleButton"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/extinction_progressive" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
