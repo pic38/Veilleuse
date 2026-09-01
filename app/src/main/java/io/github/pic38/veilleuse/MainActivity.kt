@@ -59,7 +59,34 @@ class MainActivity : AppCompatActivity() {
     private var hideControlsRunnable: Runnable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installCrashLogger()
         super.onCreate(savedInstanceState)
+
+        val diagnosticPrefs = getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
+        val previousCrash = diagnosticPrefs.getString("last_crash", null)
+        if (previousCrash != null) {
+            diagnosticPrefs.edit().remove("last_crash").apply()
+
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            clipboard.setPrimaryClip(android.content.ClipData.newPlainText("Crash Veilleuse", previousCrash))
+
+            val textView = android.widget.TextView(this).apply {
+                text = previousCrash
+                setTextIsSelectable(true)
+                setPadding(48, 32, 48, 32)
+                textSize = 12f
+            }
+            val scroll = android.widget.ScrollView(this).apply { addView(textView) }
+
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Dernier crash (déjà copié dans le presse-papier)")
+                .setView(scroll)
+                .setPositiveButton("OK") { _, _ -> finishAffinity() }
+                .setCancelable(false)
+                .show()
+            return
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -81,10 +108,29 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        prefs = getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
+        prefs = diagnosticPrefs
         detectFlash()
         loadPreferences()
         setupUi()
+    }
+
+    /** Diagnostic temporaire : capture le prochain crash non rattrapé et l'affiche
+     *  au lancement suivant, pour pouvoir le lire sans adb/logcat. */
+    private fun installCrashLogger() {
+        val previousHandler = Thread.getDefaultUncaughtExceptionHandler()
+        Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
+            try {
+                val sw = java.io.StringWriter()
+                throwable.printStackTrace(java.io.PrintWriter(sw))
+                getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .putString("last_crash", sw.toString())
+                    .commit()
+            } catch (_: Throwable) {
+                // Rien à faire si l'écriture du log échoue elle-même.
+            }
+            previousHandler?.uncaughtException(thread, throwable)
+        }
     }
 
     // ---------------------------------------------------------------------
@@ -496,7 +542,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (binding.runningContainer.visibility == View.VISIBLE) {
+        if (::binding.isInitialized && binding.runningContainer.visibility == View.VISIBLE) {
             stopNightLight(returnToSetup = true)
         } else {
             super.onBackPressed()
@@ -505,7 +551,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        if (binding.runningContainer.visibility == View.VISIBLE && isFinishing) {
+        if (::binding.isInitialized && binding.runningContainer.visibility == View.VISIBLE && isFinishing) {
             setTorch(false)
         }
     }

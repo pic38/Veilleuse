@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+- Build de diagnostic temporaire : capture le prochain crash non
+  rattrapé et l'affiche (texte sélectionnable, copié automatiquement
+  dans le presse-papier) au lancement suivant, pour permettre de
+  signaler un crash précis sans accès à `adb logcat`. Sera retiré une
+  fois le bug identifié.
+
 ## 1.5.0
 
 - Fix : le numéro de version (et le bas du bouton Lancer) pouvait être
