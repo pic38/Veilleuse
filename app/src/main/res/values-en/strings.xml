@@ -24,10 +24,20 @@
     <string name="hms_hours">%1$d h</string>
     <string name="hms_minutes">%1$d min</string>
     <string name="hms_seconds">%1$d s</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
     <string name="time_remaining_format">%1$s remaining</string>
 
     <string name="flash_unavailable">No flash detected on this device. Screen mode selected instead.</string>
     <string name="fade_flash_unsupported">Progressive fade for the flash is not supported on this device: instant shutdown applied.</string>
     <string name="waiting_for_sleep">Waiting for the phone to go to sleep (Android settings)…</string>
     <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Settings</string>
+    <string name="back_content_description">Back</string>
+    <string name="settings_title">Settings</string>
+    <string name="time_format_title">Time format</string>
+    <string name="format_compact">Compact</string>
+    <string name="format_detailed">Detailed</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Accent color</string>
 </resources>

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.13.0
+
+- Nouvel écran de réglages (icône engrenage en haut à droite) :
+  - Format de l'heure pour la durée totale et la durée du fondu :
+    Compact (actuel), Détaillé ("XX h XX min XX s"), ou HH:MM:SS.
+    Le compte à rebours pendant la veilleuse garde son propre format
+    dédié (voir 1.12.0), non affecté par ce réglage.
+  - Couleur d'accentuation : palette de 20 teintes arc-en-ciel
+    défilante (façon Image Toolbox), sélection en direct qui retinte
+    boutons, sliders et bouton Lancer.
+
 ## 1.12.0
 
 - Compte à rebours (temps restant pendant la veilleuse) : format
