@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.14.0
+
+- Fix du crash signalé en 1.6.0 : le curseur de teinte chaude / de
+  luminosité pouvait recevoir une valeur non alignée sur ses crans
+  (ex. `IllegalStateException` au démarrage) si la préférence
+  enregistrée n'était pas un multiple exact du pas du curseur. La
+  valeur est maintenant arrondie et bornée avant d'être appliquée.
+- Retrait du code de diagnostic temporaire (capture de crash +
+  affichage au lancement suivant, introduit en 1.6.0), le bug étant
+  identifié et corrigé.
+
 ## 1.13.0
 
 - Nouvel écran de réglages (icône engrenage en haut à droite) :
