@@ -12,3 +12,8 @@ local.properties
 *.aab
 /app/build
 /app/release
+
+# Wrapper généré localement (voir README : "Compiler le projet")
+/gradlew
+/gradlew.bat
+/gradle/wrapper/gradle-wrapper.jar
