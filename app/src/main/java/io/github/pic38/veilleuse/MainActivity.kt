@@ -548,11 +548,18 @@ class MainActivity : AppCompatActivity() {
     // Divers
     // ---------------------------------------------------------------------
 
+    /** N'affiche que les unités non nulles (ex. "15 min" plutôt que "00 h 15 min 00 s") ;
+     *  si tout est à zéro, affiche "0 s" plutôt qu'une chaîne vide. */
     private fun formatHms(totalSeconds: Long): String {
         val h = totalSeconds / 3600
         val m = (totalSeconds % 3600) / 60
         val s = totalSeconds % 60
-        return getString(R.string.hms_format, h, m, s)
+
+        val parts = mutableListOf<String>()
+        if (h > 0) parts += getString(R.string.hms_hours, h)
+        if (m > 0) parts += getString(R.string.hms_minutes, m)
+        if (s > 0 || parts.isEmpty()) parts += getString(R.string.hms_seconds, s)
+        return parts.joinToString(" ")
     }
 
     private fun formatRemaining(ms: Long): String {

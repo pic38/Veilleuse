@@ -21,7 +21,9 @@
     <string name="stop_button">Arrêter</string>
 
     <string name="tap_hint">Touchez l\'écran pour masquer</string>
-    <string name="hms_format">%1$02d h %2$02d min %3$02d s</string>
+    <string name="hms_hours">%1$d h</string>
+    <string name="hms_minutes">%1$d min</string>
+    <string name="hms_seconds">%1$d s</string>
     <string name="time_remaining_format">%1$s restantes</string>
 
     <string name="flash_unavailable">Aucun flash détecté sur cet appareil. Le mode Écran a été sélectionné.</string>

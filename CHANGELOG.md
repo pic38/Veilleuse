@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.11.0
+
+- Format de temps : les unités à zéro sont masquées (ex. "15 min" au
+  lieu de "00 h 15 min 00 s", "1 h 30 min" au lieu de "01 h 30 min 00 s").
+
 ## 1.10.0
 
 - Tous les temps affichés (durée totale, durée du fondu, temps
