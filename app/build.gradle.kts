@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "org.veilleuse.app"
+    namespace = "io.github.pic38.veilleuse"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "org.veilleuse.app"
+        applicationId = "io.github.pic38.veilleuse"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

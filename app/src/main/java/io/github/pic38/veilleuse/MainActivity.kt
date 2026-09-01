@@ -1,4 +1,4 @@
-package org.veilleuse.app
+package io.github.pic38.veilleuse
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import org.veilleuse.app.databinding.ActivityMainBinding
+import io.github.pic38.veilleuse.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

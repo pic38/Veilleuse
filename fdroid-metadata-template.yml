@@ -1,17 +1,17 @@
 # Modèle à copier dans le dépôt fdroiddata sous
-# metadata/org.veilleuse.app.yml lors de la soumission à F-Droid.
+# metadata/io.github.pic38.veilleuse.yml lors de la soumission à F-Droid.
 # Voir : https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/
 
 Categories:
   - System
 License: GPL-3.0-or-later
-AuthorName: Remplacer par votre nom ou pseudonyme
-SourceCode: https://github.com/VOTRE-UTILISATEUR/Veilleuse
-IssueTracker: https://github.com/VOTRE-UTILISATEUR/Veilleuse/issues
-Changelog: https://github.com/VOTRE-UTILISATEUR/Veilleuse/blob/main/CHANGELOG.md
+AuthorName: pic38
+SourceCode: https://github.com/pic38/Veilleuse
+IssueTracker: https://github.com/pic38/Veilleuse/issues
+Changelog: https://github.com/pic38/Veilleuse/blob/main/CHANGELOG.md
 
 RepoType: git
-Repo: https://github.com/VOTRE-UTILISATEUR/Veilleuse.git
+Repo: https://github.com/pic38/Veilleuse.git
 
 Builds:
   - versionName: 1.0.0

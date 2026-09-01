@@ -65,7 +65,7 @@ git init
 git add .
 git commit -m "Version initiale de Veilleuse"
 git branch -M main
-git remote add origin https://github.com/VOTRE-UTILISATEUR/Veilleuse.git
+git remote add origin https://github.com/pic38/Veilleuse.git
 git push -u origin main
 git tag v1.0.0
 git push origin v1.0.0
@@ -78,13 +78,12 @@ le `git push`.
 ## Publier sur F-Droid
 
 1. Publier le code sur un dépôt Git public (GitHub, GitLab, Codeberg…).
-2. Optionnel mais recommandé : renommer l'`applicationId` /
-   `namespace` dans `app/build.gradle.kts` (actuellement
-   `org.veilleuse.app`) pour un identifiant qui vous appartient
-   réellement (par exemple `io.github.votre-utilisateur.veilleuse`),
-   puis mettre à jour `app/src/main/java/org/veilleuse/app/` en
-   conséquence si vous changez le package Kotlin.
-3. Créer un tag Git correspondant à la version (`v1.0.0`).
+   Fait : <https://github.com/pic38/Veilleuse>.
+2. `applicationId` / `namespace` (`app/build.gradle.kts`) réglé sur
+   `io.github.pic38.veilleuse`, un identifiant qui appartient
+   réellement à l'auteur, avec le package Kotlin correspondant en
+   `app/src/main/java/io/github/pic38/veilleuse/`.
+3. Créer un tag Git correspondant à la version (`v1.0.0`). Fait.
 4. Suivre le guide officiel « Submitting to F-Droid » :
    <https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/>
    — il s'agit d'ouvrir une merge request sur le dépôt
