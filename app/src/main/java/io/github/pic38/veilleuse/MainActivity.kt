@@ -302,8 +302,6 @@ class MainActivity : AppCompatActivity() {
         setupContainer.visibility = View.GONE
         runningContainer.visibility = View.VISIBLE
         controlsOverlay.visibility = View.GONE
-        waitingForSleepText.visibility = View.GONE
-        lightSurface.setOnClickListener { showControls() }
 
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         enterImmersiveMode()
@@ -399,6 +397,10 @@ class MainActivity : AppCompatActivity() {
         countDownTimer?.cancel()
         countDownTimer = null
         cancelFade()
+        // Annule une attente d'extinction d'écran en cours : sinon un appui sur "Arrêter"
+        // pendant cette attente n'empêcherait pas la fermeture différée de se déclencher
+        // plus tard, une fois revenu sur l'écran de réglages.
+        unregisterScreenOffReceiver()
 
         setTorch(false)
         binding.lightSurface.alpha = 1f
@@ -415,9 +417,9 @@ class MainActivity : AppCompatActivity() {
             // Ne pas révéler l'écran d'accueil (lumineux) tout de suite : on reste en
             // plein écran noir et on attend que le téléphone s'endorme réellement avant
             // de fermer l'app, sinon le launcher s'affiche en pleine luminosité le temps
-            // que l'extinction automatique du système se déclenche.
-            binding.lightSurface.setOnClickListener(null)
-            binding.waitingForSleepText.visibility = View.VISIBLE
+            // que l'extinction automatique du système se déclenche. Le bouton Arrêter et
+            // l'affichage/masquage au tap restent disponibles pendant l'attente.
+            binding.remainingTimeText.text = getString(R.string.waiting_for_sleep)
             waitForScreenOffThenClose()
         } else {
             exitImmersiveMode()

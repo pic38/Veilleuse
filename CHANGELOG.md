@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.7.0
+
+- À la fin du minuteur, le bouton Arrêter et l'affichage/masquage des
+  informations au tap restent disponibles (au lieu d'être désactivés) :
+  le message "en attente de mise en veille" fait maintenant partie du
+  même système d'affichage au tap que le reste, caché par défaut.
+- (Le build de diagnostic temporaire introduit en 1.6.0 est toujours
+  actif en attendant le retour sur le crash signalé.)
+
 ## 1.6.0
 
 - Build de diagnostic temporaire : capture le prochain crash non
