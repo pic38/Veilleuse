@@ -27,4 +27,6 @@
 
     <string name="flash_unavailable">No flash detected on this device. Screen mode selected instead.</string>
     <string name="fade_flash_unsupported">Progressive fade for the flash is not supported on this device: instant shutdown applied.</string>
+    <string name="waiting_for_sleep">Waiting for the phone to go to sleep (Android settings)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
 </resources>

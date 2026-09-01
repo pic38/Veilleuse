@@ -27,5 +27,6 @@
 
     <string name="flash_unavailable">Aucun flash détecté sur cet appareil. Le mode Écran a été sélectionné.</string>
     <string name="waiting_for_sleep">En attente de la mise en veille du téléphone (réglages Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
     <string name="fade_flash_unsupported">Le fondu progressif du flash n\'est pas pris en charge par cet appareil : extinction instantanée appliquée.</string>
 </resources>

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0
+
+- Titre de l'écran de réglages descendu (marge augmentée d'environ sa
+  propre hauteur).
+- Les contrôles (source, durée, extinction, bouton Lancer) sont
+  désormais regroupés vers le bas de l'écran plutôt qu'étalés depuis
+  le haut, pour une meilleure accessibilité au pouce sur grand écran.
+- Numéro de version affiché discrètement en bas de l'écran de réglages.
+
 ## 1.3.0
 
 - À la fin du minuteur, un texte discret indique que l'app attend la

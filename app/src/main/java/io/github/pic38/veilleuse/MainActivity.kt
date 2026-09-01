@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.hardware.camera2.CameraAccessException
@@ -156,6 +157,7 @@ class MainActivity : AppCompatActivity() {
         updateFadeDurationBounds(durationSlider.value)
         updateFadeLabel(fadeDurationSlider.value)
         updateColorPreview()
+        versionText.text = getString(R.string.version_format, appVersionName())
 
         sourceToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (!isChecked) return@addOnButtonCheckedListener
@@ -214,6 +216,13 @@ class MainActivity : AppCompatActivity() {
             updateFadeLabel(maxFadeSeconds)
         }
     }
+
+    private fun appVersionName(): String =
+        try {
+            packageManager.getPackageInfo(packageName, 0).versionName ?: "?"
+        } catch (e: PackageManager.NameNotFoundException) {
+            "?"
+        }
 
     private fun updateColorPreview() {
         val drawable = binding.colorPreview.background as? GradientDrawable
