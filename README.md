@@ -1,23 +1,36 @@
+*[English version](README.en.md)*
+
 # Veilleuse
 
 Application Android minimaliste, thème noir pur OLED, qui transforme le
-téléphone en veilleuse : flash ou écran (avec teinte chaude réglable),
-durée réglable, extinction instantanée ou progressive. Aucune permission
-Internet, aucun traceur, 100% logiciel libre (GPL-3.0-or-later).
+téléphone en veilleuse : flash ou écran (avec teinte chaude et
+luminosité réglables), durée réglable, extinction instantanée ou
+progressive. Écran de réglages secondaire avec format d'heure, couleur
+d'accentuation (palette de teintes + blanc, avec un curseur pour
+l'assombrir) et langue de l'application (26 langues, ou "Système").
+Aucune permission Internet, aucun traceur, 100% logiciel libre
+(GPL-3.0-or-later).
 
 ## Fonctionnement
 
-1. Sur l'écran de réglages : choisir la source (**Flash** ou **Écran**),
+1. Sur l'écran principal : choisir la source (**Flash** ou **Écran**),
    la durée avant extinction (1 à 120 min), le mode d'extinction
    (**Instantanée** ou **Progressive** avec durée du fondu réglable),
    et pour le mode Écran, la teinte chaude et la luminosité.
-2. Appuyer sur **Lancer** : l'interface disparaît, l'écran devient noir
+2. Icône ⚙️ en haut à droite : écran **Réglages** — format
+   d'affichage de l'heure (Compact / Détaillé / HH:MM:SS), couleur
+   d'accentuation de l'interface (palette de teintes + blanc, avec un
+   curseur pour l'assombrir), et langue de l'application (parmi 26
+   langues, ou "Système" pour suivre celle de l'appareil). Une note en
+   bas de cet écran renvoie vers ce dépôt GitHub pour signaler un bug
+   ou proposer une suggestion.
+3. Appuyer sur **Lancer** : l'interface disparaît, l'écran devient noir
    (ou affiche la couleur chaude choisie en plein écran). La torche ou
    l'écran restent actifs, mode immersif (barres système masquées).
-3. Un appui sur l'écran fait réapparaître temporairement le temps
+4. Un appui sur l'écran fait réapparaître temporairement le temps
    restant et le bouton **Arrêter** (masqués automatiquement après
    quelques secondes).
-4. À la fin du minuteur, la lumière s'éteint (instantanément ou en
+5. À la fin du minuteur, la lumière s'éteint (instantanément ou en
    fondu) puis l'application se ferme d'elle-même, laissant le
    téléphone repasser en veille normalement.
 
@@ -51,47 +64,36 @@ L'APK de debug est généré dans `app/build/outputs/apk/debug/`.
 ## Structure du dépôt
 
 ```
-app/                    Code source de l'application (Kotlin)
-metadata/                Métadonnées F-Droid/Play (fastlane) : titre,
-                          descriptions, changelogs, en fr-FR et en-US
-fdroid-metadata-template.yml   Modèle de fichier à soumettre dans fdroiddata
-LICENSE                  GPL-3.0-or-later
+app/                      Code source de l'application (Kotlin)
+                            Ressources traduites dans 26 langues
+                            (app/src/main/res/values-*)
+metadata/                  Métadonnées F-Droid/Play (fastlane) : titre,
+                            descriptions, changelogs, en fr-FR et en-US
+fdroid-metadata-template.yml   Modèle utilisé pour la soumission fdroiddata
+CHANGELOG.md               Historique détaillé des versions
+LICENSE                    GPL-3.0-or-later
 ```
-
-## Publier sur GitHub
-
-```bash
-git init
-git add .
-git commit -m "Version initiale de Veilleuse"
-git branch -M main
-git remote add origin https://github.com/pic38/Veilleuse.git
-git push -u origin main
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-Pensez à créer un dépôt GitHub public nommé `Veilleuse` (ou autre nom de
-votre choix — mettez-le à jour dans `fdroid-metadata-template.yml`) avant
-le `git push`.
 
 ## Publier sur F-Droid
 
-1. Publier le code sur un dépôt Git public (GitHub, GitLab, Codeberg…).
-   Fait : <https://github.com/pic38/Veilleuse>.
+Le projet est soumis à F-Droid : voir la merge request
+<https://gitlab.com/fdroid/fdroiddata/-/merge_requests/47609> sur le
+dépôt `fdroiddata` (en attente de revue par les mainteneurs).
+
+Pour référence, la procédure suivie :
+
+1. Code publié sur un dépôt Git public : <https://github.com/pic38/Veilleuse>.
 2. `applicationId` / `namespace` (`app/build.gradle.kts`) réglé sur
    `io.github.pic38.veilleuse`, un identifiant qui appartient
    réellement à l'auteur, avec le package Kotlin correspondant en
    `app/src/main/java/io/github/pic38/veilleuse/`.
-3. Créer un tag Git correspondant à la version (`v1.0.0`). Fait.
-4. Suivre le guide officiel « Submitting to F-Droid » :
+3. Un tag Git par version (`vX.Y.Z`), aligné sur `versionName` /
+   `versionCode` (`app/build.gradle.kts`).
+4. Guide officiel « Submitting to F-Droid » suivi :
    <https://f-droid.org/docs/Submitting_to_F-Droid_Quick_Start_Guide/>
-   — il s'agit d'ouvrir une merge request sur le dépôt
-   `fdroiddata` avec un fichier `metadata/<applicationId>.yml`
-   basé sur `fdroid-metadata-template.yml` fourni ici.
-5. Alternative plus rapide : héberger son propre dépôt F-Droid avec
-   l'outil `fdroidserver` (`fdroid init`, `fdroid build`, `fdroid update`),
-   utile pour tester ou distribuer sans passer par le dépôt officiel.
+   — merge request sur le dépôt `fdroiddata` avec un fichier
+   `metadata/<applicationId>.yml` basé sur
+   `fdroid-metadata-template.yml` fourni ici.
 
 ## Permissions
 
