@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.16.0
+
+- Traduction de l'interface dans 24 langues supplémentaires : espagnol,
+  allemand, portugais (Portugal et Brésil), italien, néerlandais,
+  russe, polonais, turc, arabe, hindi, indonésien, vietnamien, thaï,
+  coréen, japonais, chinois (simplifié et traditionnel), ukrainien,
+  roumain, grec, tchèque, suédois et persan — en plus du français et
+  de l'anglais déjà disponibles.
+- Correction d'une chaîne anglaise incohérente (« Tap the screen to
+  show controls » → « to hide controls », le texte s'affichant en
+  réalité quand les commandes sont déjà visibles).
+
 ## 1.15.1
 
 - Le curseur "Vers le noir" est plafonné à 75% (au lieu de 100%) pour

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Işık kaynağı</string>
+    <string name="source_flash">Flaş</string>
+    <string name="source_screen">Ekran</string>
+
+    <string name="warm_color_title">Sıcak ton</string>
+    <string name="brightness_title">Parlaklık</string>
+
+    <string name="duration_title">Kapanmadan önceki süre</string>
+
+    <string name="extinction_title">Kapanma</string>
+    <string name="extinction_instant">Anında</string>
+    <string name="extinction_progressive">Kademeli</string>
+
+    <string name="fade_duration_title">Geçiş süresi</string>
+
+    <string name="start_button">Başlat</string>
+    <string name="stop_button">Durdur</string>
+
+    <string name="tap_hint">Denetimleri gizlemek için ekrana dokunun</string>
+    <string name="hms_hours">%1$d sa</string>
+    <string name="hms_minutes">%1$d dk</string>
+    <string name="hms_seconds">%1$d sn</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s kaldı</string>
+
+    <string name="flash_unavailable">Bu cihazda flaş algılanmadı. Bunun yerine Ekran modu seçildi.</string>
+    <string name="fade_flash_unsupported">Bu cihazda flaşın kademeli sönümlenmesi desteklenmiyor: anında kapanma uygulandı.</string>
+    <string name="waiting_for_sleep">Telefonun uyku moduna geçmesi bekleniyor (Android ayarları)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Ayarlar</string>
+    <string name="back_content_description">Geri</string>
+    <string name="settings_title">Ayarlar</string>
+    <string name="time_format_title">Saat biçimi</string>
+    <string name="format_compact">Kompakt</string>
+    <string name="format_detailed">Ayrıntılı</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Vurgu rengi</string>
+    <string name="accent_black_title">Siyaha doğru</string>
+</resources>

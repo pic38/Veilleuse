@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Sumber cahaya</string>
+    <string name="source_flash">Flash</string>
+    <string name="source_screen">Layar</string>
+
+    <string name="warm_color_title">Corak hangat</string>
+    <string name="brightness_title">Kecerahan</string>
+
+    <string name="duration_title">Durasi sebelum mati</string>
+
+    <string name="extinction_title">Mati</string>
+    <string name="extinction_instant">Instan</string>
+    <string name="extinction_progressive">Bertahap</string>
+
+    <string name="fade_duration_title">Durasi transisi</string>
+
+    <string name="start_button">Mulai</string>
+    <string name="stop_button">Berhenti</string>
+
+    <string name="tap_hint">Ketuk layar untuk menyembunyikan kontrol</string>
+    <string name="hms_hours">%1$d j</string>
+    <string name="hms_minutes">%1$d mnt</string>
+    <string name="hms_seconds">%1$d dtk</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s tersisa</string>
+
+    <string name="flash_unavailable">Tidak ada flash yang terdeteksi di perangkat ini. Mode Layar dipilih sebagai gantinya.</string>
+    <string name="fade_flash_unsupported">Transisi bertahap pada flash tidak didukung di perangkat ini: mati instan diterapkan.</string>
+    <string name="waiting_for_sleep">Menunggu ponsel masuk mode tidur (pengaturan Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Pengaturan</string>
+    <string name="back_content_description">Kembali</string>
+    <string name="settings_title">Pengaturan</string>
+    <string name="time_format_title">Format waktu</string>
+    <string name="format_compact">Ringkas</string>
+    <string name="format_detailed">Rinci</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Warna aksen</string>
+    <string name="accent_black_title">Menuju hitam</string>
+</resources>

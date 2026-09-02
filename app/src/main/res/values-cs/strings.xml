@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Zdroj světla</string>
+    <string name="source_flash">Blesk</string>
+    <string name="source_screen">Obrazovka</string>
+
+    <string name="warm_color_title">Teplý odstín</string>
+    <string name="brightness_title">Jas</string>
+
+    <string name="duration_title">Doba do vypnutí</string>
+
+    <string name="extinction_title">Vypnutí</string>
+    <string name="extinction_instant">Okamžité</string>
+    <string name="extinction_progressive">Postupné</string>
+
+    <string name="fade_duration_title">Doba prolínání</string>
+
+    <string name="start_button">Spustit</string>
+    <string name="stop_button">Zastavit</string>
+
+    <string name="tap_hint">Klepnutím na obrazovku skryjete ovládací prvky</string>
+    <string name="hms_hours">%1$d h</string>
+    <string name="hms_minutes">%1$d min</string>
+    <string name="hms_seconds">%1$d s</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">Zbývá %1$s</string>
+
+    <string name="flash_unavailable">Na tomto zařízení nebyl zjištěn žádný blesk. Místo toho byl vybrán režim Obrazovka.</string>
+    <string name="fade_flash_unsupported">Postupné ztlumení blesku není na tomto zařízení podporováno: použito okamžité vypnutí.</string>
+    <string name="waiting_for_sleep">Čeká se, až telefon přejde do režimu spánku (nastavení Androidu)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Nastavení</string>
+    <string name="back_content_description">Zpět</string>
+    <string name="settings_title">Nastavení</string>
+    <string name="time_format_title">Formát času</string>
+    <string name="format_compact">Kompaktní</string>
+    <string name="format_detailed">Podrobný</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Barva zvýraznění</string>
+    <string name="accent_black_title">Směrem k černé</string>
+</resources>

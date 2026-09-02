@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Πηγή φωτός</string>
+    <string name="source_flash">Φλας</string>
+    <string name="source_screen">Οθόνη</string>
+
+    <string name="warm_color_title">Θερμή απόχρωση</string>
+    <string name="brightness_title">Φωτεινότητα</string>
+
+    <string name="duration_title">Διάρκεια πριν το σβήσιμο</string>
+
+    <string name="extinction_title">Σβήσιμο</string>
+    <string name="extinction_instant">Άμεσο</string>
+    <string name="extinction_progressive">Σταδιακό</string>
+
+    <string name="fade_duration_title">Διάρκεια απόσβεσης</string>
+
+    <string name="start_button">Έναρξη</string>
+    <string name="stop_button">Διακοπή</string>
+
+    <string name="tap_hint">Πατήστε την οθόνη για απόκρυψη των χειριστηρίων</string>
+    <string name="hms_hours">%1$d ώ</string>
+    <string name="hms_minutes">%1$d λ</string>
+    <string name="hms_seconds">%1$d δ</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">Απομένουν %1$s</string>
+
+    <string name="flash_unavailable">Δεν εντοπίστηκε φλας σε αυτή τη συσκευή. Επιλέχθηκε η λειτουργία Οθόνης.</string>
+    <string name="fade_flash_unsupported">Η σταδιακή απόσβεση του φλας δεν υποστηρίζεται σε αυτή τη συσκευή: εφαρμόστηκε άμεσο σβήσιμο.</string>
+    <string name="waiting_for_sleep">Αναμονή μετάβασης του τηλεφώνου σε αδράνεια (ρυθμίσεις Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Ρυθμίσεις</string>
+    <string name="back_content_description">Πίσω</string>
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="time_format_title">Μορφή ώρας</string>
+    <string name="format_compact">Συμπαγής</string>
+    <string name="format_detailed">Αναλυτική</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Χρώμα έμφασης</string>
+    <string name="accent_black_title">Προς το μαύρο</string>
+</resources>

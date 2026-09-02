@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">光源</string>
+    <string name="source_flash">フラッシュ</string>
+    <string name="source_screen">画面</string>
+
+    <string name="warm_color_title">暖色の濃さ</string>
+    <string name="brightness_title">明るさ</string>
+
+    <string name="duration_title">消灯までの時間</string>
+
+    <string name="extinction_title">消灯方法</string>
+    <string name="extinction_instant">瞬時</string>
+    <string name="extinction_progressive">徐々に</string>
+
+    <string name="fade_duration_title">フェード時間</string>
+
+    <string name="start_button">開始</string>
+    <string name="stop_button">停止</string>
+
+    <string name="tap_hint">画面をタップしてコントロールを非表示にする</string>
+    <string name="hms_hours">%1$d時間</string>
+    <string name="hms_minutes">%1$d分</string>
+    <string name="hms_seconds">%1$d秒</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">残り%1$s</string>
+
+    <string name="flash_unavailable">この端末ではフラッシュが検出されませんでした。代わりに画面モードが選択されました。</string>
+    <string name="fade_flash_unsupported">この端末ではフラッシュの徐々に消灯する機能はサポートされていません。瞬時に消灯します。</string>
+    <string name="waiting_for_sleep">スマートフォンがスリープ状態になるのを待っています（Android設定）…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">設定</string>
+    <string name="back_content_description">戻る</string>
+    <string name="settings_title">設定</string>
+    <string name="time_format_title">時刻形式</string>
+    <string name="format_compact">コンパクト</string>
+    <string name="format_detailed">詳細</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">アクセントカラー</string>
+    <string name="accent_black_title">黒に近づける</string>
+</resources>

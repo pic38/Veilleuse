@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Источник света</string>
+    <string name="source_flash">Вспышка</string>
+    <string name="source_screen">Экран</string>
+
+    <string name="warm_color_title">Тёплый оттенок</string>
+    <string name="brightness_title">Яркость</string>
+
+    <string name="duration_title">Длительность до выключения</string>
+
+    <string name="extinction_title">Выключение</string>
+    <string name="extinction_instant">Мгновенное</string>
+    <string name="extinction_progressive">Плавное</string>
+
+    <string name="fade_duration_title">Длительность затухания</string>
+
+    <string name="start_button">Запустить</string>
+    <string name="stop_button">Остановить</string>
+
+    <string name="tap_hint">Коснитесь экрана, чтобы скрыть элементы управления</string>
+    <string name="hms_hours">%1$d ч</string>
+    <string name="hms_minutes">%1$d мин</string>
+    <string name="hms_seconds">%1$d с</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">Осталось %1$s</string>
+
+    <string name="flash_unavailable">На этом устройстве вспышка не обнаружена. Вместо неё выбран режим «Экран».</string>
+    <string name="fade_flash_unsupported">Плавное затухание вспышки не поддерживается на этом устройстве: применено мгновенное выключение.</string>
+    <string name="waiting_for_sleep">Ожидание перехода телефона в спящий режим (настройки Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Настройки</string>
+    <string name="back_content_description">Назад</string>
+    <string name="settings_title">Настройки</string>
+    <string name="time_format_title">Формат времени</string>
+    <string name="format_compact">Компактный</string>
+    <string name="format_detailed">Подробный</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Акцентный цвет</string>
+    <string name="accent_black_title">К чёрному</string>
+</resources>

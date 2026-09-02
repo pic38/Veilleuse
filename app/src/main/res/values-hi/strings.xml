@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">प्रकाश स्रोत</string>
+    <string name="source_flash">फ्लैश</string>
+    <string name="source_screen">स्क्रीन</string>
+
+    <string name="warm_color_title">गर्म रंगत</string>
+    <string name="brightness_title">चमक</string>
+
+    <string name="duration_title">बंद होने से पहले की अवधि</string>
+
+    <string name="extinction_title">बंद करना</string>
+    <string name="extinction_instant">तुरंत</string>
+    <string name="extinction_progressive">क्रमिक</string>
+
+    <string name="fade_duration_title">फ़ेड की अवधि</string>
+
+    <string name="start_button">शुरू करें</string>
+    <string name="stop_button">रोकें</string>
+
+    <string name="tap_hint">नियंत्रण छिपाने के लिए स्क्रीन को टैप करें</string>
+    <string name="hms_hours">%1$d घं</string>
+    <string name="hms_minutes">%1$d मिनट</string>
+    <string name="hms_seconds">%1$d सेकंड</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s शेष</string>
+
+    <string name="flash_unavailable">इस डिवाइस पर कोई फ्लैश नहीं मिला। इसके बजाय स्क्रीन मोड चुना गया।</string>
+    <string name="fade_flash_unsupported">इस डिवाइस पर फ्लैश का क्रमिक फ़ेड समर्थित नहीं है: तुरंत बंद करना लागू किया गया।</string>
+    <string name="waiting_for_sleep">फ़ोन के स्लीप मोड में जाने की प्रतीक्षा (Android सेटिंग्स)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">सेटिंग्स</string>
+    <string name="back_content_description">वापस</string>
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="time_format_title">समय प्रारूप</string>
+    <string name="format_compact">संक्षिप्त</string>
+    <string name="format_detailed">विस्तृत</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">उच्चारण रंग</string>
+    <string name="accent_black_title">काले की ओर</string>
+</resources>

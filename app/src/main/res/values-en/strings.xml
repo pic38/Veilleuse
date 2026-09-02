@@ -20,7 +20,7 @@
     <string name="start_button">Start</string>
     <string name="stop_button">Stop</string>
 
-    <string name="tap_hint">Tap the screen to show controls</string>
+    <string name="tap_hint">Tap the screen to hide controls</string>
     <string name="hms_hours">%1$d h</string>
     <string name="hms_minutes">%1$d min</string>
     <string name="hms_seconds">%1$d s</string>

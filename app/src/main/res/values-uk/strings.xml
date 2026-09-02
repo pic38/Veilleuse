@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Джерело світла</string>
+    <string name="source_flash">Спалах</string>
+    <string name="source_screen">Екран</string>
+
+    <string name="warm_color_title">Теплий відтінок</string>
+    <string name="brightness_title">Яскравість</string>
+
+    <string name="duration_title">Тривалість до вимкнення</string>
+
+    <string name="extinction_title">Вимкнення</string>
+    <string name="extinction_instant">Миттєве</string>
+    <string name="extinction_progressive">Поступове</string>
+
+    <string name="fade_duration_title">Тривалість згасання</string>
+
+    <string name="start_button">Почати</string>
+    <string name="stop_button">Зупинити</string>
+
+    <string name="tap_hint">Торкніться екрана, щоб приховати елементи керування</string>
+    <string name="hms_hours">%1$d год</string>
+    <string name="hms_minutes">%1$d хв</string>
+    <string name="hms_seconds">%1$d с</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">Залишилось %1$s</string>
+
+    <string name="flash_unavailable">На цьому пристрої не виявлено спалаху. Натомість обрано режим «Екран».</string>
+    <string name="fade_flash_unsupported">Поступове згасання спалаху не підтримується на цьому пристрої: застосовано миттєве вимкнення.</string>
+    <string name="waiting_for_sleep">Очікування переходу телефону в режим сну (налаштування Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Налаштування</string>
+    <string name="back_content_description">Назад</string>
+    <string name="settings_title">Налаштування</string>
+    <string name="time_format_title">Формат часу</string>
+    <string name="format_compact">Компактний</string>
+    <string name="format_detailed">Детальний</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Акцентний колір</string>
+    <string name="accent_black_title">До чорного</string>
+</resources>

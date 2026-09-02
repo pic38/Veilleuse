@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Sursă de lumină</string>
+    <string name="source_flash">Blitz</string>
+    <string name="source_screen">Ecran</string>
+
+    <string name="warm_color_title">Nuanță caldă</string>
+    <string name="brightness_title">Luminozitate</string>
+
+    <string name="duration_title">Durată înainte de oprire</string>
+
+    <string name="extinction_title">Oprire</string>
+    <string name="extinction_instant">Instantanee</string>
+    <string name="extinction_progressive">Progresivă</string>
+
+    <string name="fade_duration_title">Durata stingerii</string>
+
+    <string name="start_button">Pornire</string>
+    <string name="stop_button">Oprire</string>
+
+    <string name="tap_hint">Atingeți ecranul pentru a ascunde comenzile</string>
+    <string name="hms_hours">%1$d h</string>
+    <string name="hms_minutes">%1$d min</string>
+    <string name="hms_seconds">%1$d s</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s rămase</string>
+
+    <string name="flash_unavailable">Nu s-a detectat niciun blitz pe acest dispozitiv. A fost selectat modul Ecran în schimb.</string>
+    <string name="fade_flash_unsupported">Stingerea progresivă a blițului nu este acceptată pe acest dispozitiv: s-a aplicat oprirea instantanee.</string>
+    <string name="waiting_for_sleep">Se așteaptă ca telefonul să intre în repaus (setări Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Setări</string>
+    <string name="back_content_description">Înapoi</string>
+    <string name="settings_title">Setări</string>
+    <string name="time_format_title">Format oră</string>
+    <string name="format_compact">Compact</string>
+    <string name="format_detailed">Detaliat</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Culoare de accent</string>
+    <string name="accent_black_title">Spre negru</string>
+</resources>

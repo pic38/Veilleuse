@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">光源</string>
+    <string name="source_flash">闪光灯</string>
+    <string name="source_screen">屏幕</string>
+
+    <string name="warm_color_title">暖色调</string>
+    <string name="brightness_title">亮度</string>
+
+    <string name="duration_title">熄灭前的时长</string>
+
+    <string name="extinction_title">熄灭方式</string>
+    <string name="extinction_instant">立即</string>
+    <string name="extinction_progressive">渐变</string>
+
+    <string name="fade_duration_title">渐变时长</string>
+
+    <string name="start_button">开始</string>
+    <string name="stop_button">停止</string>
+
+    <string name="tap_hint">点按屏幕以隐藏控件</string>
+    <string name="hms_hours">%1$d 小时</string>
+    <string name="hms_minutes">%1$d 分钟</string>
+    <string name="hms_seconds">%1$d 秒</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">剩余 %1$s</string>
+
+    <string name="flash_unavailable">未在此设备上检测到闪光灯，已改为选择屏幕模式。</string>
+    <string name="fade_flash_unsupported">此设备不支持闪光灯渐变熄灭：已应用立即熄灭。</string>
+    <string name="waiting_for_sleep">正在等待手机进入休眠状态（Android 设置）…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">设置</string>
+    <string name="back_content_description">返回</string>
+    <string name="settings_title">设置</string>
+    <string name="time_format_title">时间格式</string>
+    <string name="format_compact">简洁</string>
+    <string name="format_detailed">详细</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">强调色</string>
+    <string name="accent_black_title">趋向黑色</string>
+</resources>

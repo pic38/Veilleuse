@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">مصدر الضوء</string>
+    <string name="source_flash">الفلاش</string>
+    <string name="source_screen">الشاشة</string>
+
+    <string name="warm_color_title">درجة اللون الدافئ</string>
+    <string name="brightness_title">السطوع</string>
+
+    <string name="duration_title">المدة قبل الإطفاء</string>
+
+    <string name="extinction_title">الإطفاء</string>
+    <string name="extinction_instant">فوري</string>
+    <string name="extinction_progressive">تدريجي</string>
+
+    <string name="fade_duration_title">مدة التلاشي</string>
+
+    <string name="start_button">بدء</string>
+    <string name="stop_button">إيقاف</string>
+
+    <string name="tap_hint">انقر على الشاشة لإخفاء عناصر التحكم</string>
+    <string name="hms_hours">%1$d س</string>
+    <string name="hms_minutes">%1$d د</string>
+    <string name="hms_seconds">%1$d ث</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">تبقّى %1$s</string>
+
+    <string name="flash_unavailable">لم يتم الكشف عن أي فلاش في هذا الجهاز. تم اختيار وضع الشاشة بدلاً من ذلك.</string>
+    <string name="fade_flash_unsupported">التلاشي التدريجي للفلاش غير مدعوم على هذا الجهاز: تم تطبيق الإطفاء الفوري.</string>
+    <string name="waiting_for_sleep">في انتظار دخول الهاتف في وضع السكون (إعدادات أندرويد)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">الإعدادات</string>
+    <string name="back_content_description">رجوع</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="time_format_title">تنسيق الوقت</string>
+    <string name="format_compact">مضغوط</string>
+    <string name="format_detailed">مفصّل</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">لون التمييز</string>
+    <string name="accent_black_title">نحو الأسود</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">منبع نور</string>
+    <string name="source_flash">فلاش</string>
+    <string name="source_screen">صفحه‌نمایش</string>
+
+    <string name="warm_color_title">رنگ گرم</string>
+    <string name="brightness_title">روشنایی</string>
+
+    <string name="duration_title">مدت زمان تا خاموش شدن</string>
+
+    <string name="extinction_title">خاموش شدن</string>
+    <string name="extinction_instant">فوری</string>
+    <string name="extinction_progressive">تدریجی</string>
+
+    <string name="fade_duration_title">مدت زمان محو شدن</string>
+
+    <string name="start_button">شروع</string>
+    <string name="stop_button">توقف</string>
+
+    <string name="tap_hint">برای پنهان کردن کنترل‌ها روی صفحه ضربه بزنید</string>
+    <string name="hms_hours">%1$d س</string>
+    <string name="hms_minutes">%1$d د</string>
+    <string name="hms_seconds">%1$d ث</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s باقی‌مانده</string>
+
+    <string name="flash_unavailable">هیچ فلاشی روی این دستگاه شناسایی نشد. در عوض حالت صفحه‌نمایش انتخاب شد.</string>
+    <string name="fade_flash_unsupported">محو شدن تدریجی فلاش در این دستگاه پشتیبانی نمی‌شود: خاموش شدن فوری اعمال شد.</string>
+    <string name="waiting_for_sleep">در انتظار رفتن گوشی به حالت خواب (تنظیمات اندروید)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">تنظیمات</string>
+    <string name="back_content_description">بازگشت</string>
+    <string name="settings_title">تنظیمات</string>
+    <string name="time_format_title">قالب زمان</string>
+    <string name="format_compact">فشرده</string>
+    <string name="format_detailed">مفصل</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">رنگ تأکیدی</string>
+    <string name="accent_black_title">به سمت سیاه</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">Lichtbron</string>
+    <string name="source_flash">Flits</string>
+    <string name="source_screen">Scherm</string>
+
+    <string name="warm_color_title">Warme tint</string>
+    <string name="brightness_title">Helderheid</string>
+
+    <string name="duration_title">Duur tot uitschakelen</string>
+
+    <string name="extinction_title">Uitschakelen</string>
+    <string name="extinction_instant">Direct</string>
+    <string name="extinction_progressive">Geleidelijk</string>
+
+    <string name="fade_duration_title">Duur van de overvloeiing</string>
+
+    <string name="start_button">Starten</string>
+    <string name="stop_button">Stoppen</string>
+
+    <string name="tap_hint">Tik op het scherm om de bediening te verbergen</string>
+    <string name="hms_hours">%1$d u</string>
+    <string name="hms_minutes">%1$d min</string>
+    <string name="hms_seconds">%1$d s</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s resterend</string>
+
+    <string name="flash_unavailable">Geen flits gedetecteerd op dit apparaat. Schermmodus is in plaats daarvan geselecteerd.</string>
+    <string name="fade_flash_unsupported">Geleidelijk dimmen van de flits wordt niet ondersteund op dit apparaat: directe uitschakeling toegepast.</string>
+    <string name="waiting_for_sleep">Wachten tot de telefoon in slaapstand gaat (Android-instellingen)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">Instellingen</string>
+    <string name="back_content_description">Terug</string>
+    <string name="settings_title">Instellingen</string>
+    <string name="time_format_title">Tijdnotatie</string>
+    <string name="format_compact">Compact</string>
+    <string name="format_detailed">Gedetailleerd</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">Accentkleur</string>
+    <string name="accent_black_title">Richting zwart</string>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">แหล่งกำเนิดแสง</string>
+    <string name="source_flash">แฟลช</string>
+    <string name="source_screen">หน้าจอ</string>
+
+    <string name="warm_color_title">โทนสีอุ่น</string>
+    <string name="brightness_title">ความสว่าง</string>
+
+    <string name="duration_title">ระยะเวลาก่อนปิด</string>
+
+    <string name="extinction_title">การปิด</string>
+    <string name="extinction_instant">ทันที</string>
+    <string name="extinction_progressive">ค่อยเป็นค่อยไป</string>
+
+    <string name="fade_duration_title">ระยะเวลาการหรี่</string>
+
+    <string name="start_button">เริ่ม</string>
+    <string name="stop_button">หยุด</string>
+
+    <string name="tap_hint">แตะหน้าจอเพื่อซ่อนตัวควบคุม</string>
+    <string name="hms_hours">%1$d ชม.</string>
+    <string name="hms_minutes">%1$d น.</string>
+    <string name="hms_seconds">%1$d วิ</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">เหลืออีก %1$s</string>
+
+    <string name="flash_unavailable">ไม่พบแฟลชบนอุปกรณ์นี้ จึงเลือกโหมดหน้าจอแทน</string>
+    <string name="fade_flash_unsupported">อุปกรณ์นี้ไม่รองรับการหรี่แฟลชแบบค่อยเป็นค่อยไป: ใช้การปิดทันทีแทน</string>
+    <string name="waiting_for_sleep">กำลังรอให้โทรศัพท์เข้าสู่โหมดสลีป (การตั้งค่า Android)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">การตั้งค่า</string>
+    <string name="back_content_description">ย้อนกลับ</string>
+    <string name="settings_title">การตั้งค่า</string>
+    <string name="time_format_title">รูปแบบเวลา</string>
+    <string name="format_compact">กะทัดรัด</string>
+    <string name="format_detailed">ละเอียด</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">สีเน้น</string>
+    <string name="accent_black_title">ไปทางสีดำ</string>
+</resources>

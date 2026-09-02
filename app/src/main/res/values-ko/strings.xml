@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Veilleuse</string>
+
+    <string name="source_title">광원</string>
+    <string name="source_flash">플래시</string>
+    <string name="source_screen">화면</string>
+
+    <string name="warm_color_title">따뜻한 색조</string>
+    <string name="brightness_title">밝기</string>
+
+    <string name="duration_title">꺼지기까지의 시간</string>
+
+    <string name="extinction_title">종료</string>
+    <string name="extinction_instant">즉시</string>
+    <string name="extinction_progressive">점진적</string>
+
+    <string name="fade_duration_title">페이드 시간</string>
+
+    <string name="start_button">시작</string>
+    <string name="stop_button">정지</string>
+
+    <string name="tap_hint">화면을 탭하여 컨트롤 숨기기</string>
+    <string name="hms_hours">%1$d시간</string>
+    <string name="hms_minutes">%1$d분</string>
+    <string name="hms_seconds">%1$d초</string>
+    <string name="clock_format">%1$02d:%2$02d:%3$02d</string>
+    <string name="time_remaining_format">%1$s 남음</string>
+
+    <string name="flash_unavailable">이 기기에서 플래시를 감지하지 못했습니다. 대신 화면 모드가 선택되었습니다.</string>
+    <string name="fade_flash_unsupported">이 기기에서는 플래시의 점진적 페이드가 지원되지 않습니다. 즉시 종료가 적용되었습니다.</string>
+    <string name="waiting_for_sleep">휴대폰이 절전 모드로 전환되기를 기다리는 중(Android 설정)…</string>
+    <string name="version_format">Veilleuse v%1$s</string>
+
+    <string name="settings_content_description">설정</string>
+    <string name="back_content_description">뒤로</string>
+    <string name="settings_title">설정</string>
+    <string name="time_format_title">시간 형식</string>
+    <string name="format_compact">간단히</string>
+    <string name="format_detailed">상세히</string>
+    <string name="format_clock">HH:MM:SS</string>
+    <string name="accent_color_title">강조 색상</string>
+    <string name="accent_black_title">검정으로</string>
+</resources>
