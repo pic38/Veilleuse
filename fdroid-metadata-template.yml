@@ -10,6 +10,8 @@ SourceCode: https://github.com/pic38/Veilleuse
 IssueTracker: https://github.com/pic38/Veilleuse/issues
 Changelog: https://github.com/pic38/Veilleuse/blob/HEAD/CHANGELOG.md
 
+AutoName: Veilleuse
+
 RepoType: git
 Repo: https://github.com/pic38/Veilleuse.git
 
