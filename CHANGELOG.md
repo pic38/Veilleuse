@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.17.2
+
+- Fix : le lien GitHub intégré au texte de la note (introduit en
+  1.17.1) ne répondait pas de façon fiable au toucher. Remplacé par
+  un bouton dédié "GitHub" sous la note, ouvrant le dépôt dans le
+  navigateur.
+
 ## 1.17.1
 
 - Écran Réglages : ajout d'une note au-dessus du sélecteur de langue

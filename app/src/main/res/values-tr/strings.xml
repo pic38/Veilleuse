@@ -35,7 +35,8 @@
     <string name="settings_content_description">Ayarlar</string>
     <string name="back_content_description">Geri</string>
     <string name="settings_title">Ayarlar</string>
-    <string name="feedback_note">Bir öneriniz mi var? Bildirilecek bir hata mı? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
+    <string name="feedback_note">Bir öneriniz mi var? Bildirilecek bir hata mı?</string>
+    <string name="github_button">GitHub</string>
     <string name="language_title">Dil</string>
     <string name="language_system_default">Sistem (varsayılan)</string>
     <string name="time_format_title">Saat biçimi</string>

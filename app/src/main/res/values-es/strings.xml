@@ -35,7 +35,8 @@
     <string name="settings_content_description">Ajustes</string>
     <string name="back_content_description">Atrás</string>
     <string name="settings_title">Ajustes</string>
-    <string name="feedback_note">¿Una sugerencia? ¿Un error que reportar? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
+    <string name="feedback_note">¿Una sugerencia? ¿Un error que reportar?</string>
+    <string name="github_button">GitHub</string>
     <string name="language_title">Idioma</string>
     <string name="language_system_default">Sistema (predeterminado)</string>
     <string name="time_format_title">Formato de hora</string>

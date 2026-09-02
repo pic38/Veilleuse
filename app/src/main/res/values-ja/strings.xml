@@ -35,7 +35,8 @@
     <string name="settings_content_description">設定</string>
     <string name="back_content_description">戻る</string>
     <string name="settings_title">設定</string>
-    <string name="feedback_note">ご提案は？ 報告したいバグは？ <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
+    <string name="feedback_note">ご提案は？ 報告したいバグは？</string>
+    <string name="github_button">GitHub</string>
     <string name="language_title">言語</string>
     <string name="language_system_default">システム（デフォルト）</string>
     <string name="time_format_title">時刻形式</string>

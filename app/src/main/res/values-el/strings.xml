@@ -35,7 +35,8 @@
     <string name="settings_content_description">Ρυθμίσεις</string>
     <string name="back_content_description">Πίσω</string>
     <string name="settings_title">Ρυθμίσεις</string>
-    <string name="feedback_note">Μια πρόταση; Ένα σφάλμα προς αναφορά; <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
+    <string name="feedback_note">Μια πρόταση; Ένα σφάλμα προς αναφορά;</string>
+    <string name="github_button">GitHub</string>
     <string name="language_title">Γλώσσα</string>
     <string name="language_system_default">Σύστημα (προεπιλογή)</string>
     <string name="time_format_title">Μορφή ώρας</string>

@@ -35,7 +35,8 @@
     <string name="settings_content_description">Definições</string>
     <string name="back_content_description">Voltar</string>
     <string name="settings_title">Definições</string>
-    <string name="feedback_note">Uma sugestão? Um erro a comunicar? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
+    <string name="feedback_note">Uma sugestão? Um erro a comunicar?</string>
+    <string name="github_button">GitHub</string>
     <string name="language_title">Idioma</string>
     <string name="language_system_default">Sistema (predefinição)</string>
     <string name="time_format_title">Formato de hora</string>

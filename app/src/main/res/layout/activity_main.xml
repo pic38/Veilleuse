@@ -263,11 +263,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:autoLink="web"
-                android:linksClickable="true"
                 android:text="@string/feedback_note"
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/githubButton"
+                style="@style/ToggleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/github_button" />
 
             <TextView
                 style="@style/SectionLabel"
