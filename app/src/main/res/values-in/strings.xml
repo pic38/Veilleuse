@@ -35,6 +35,8 @@
     <string name="settings_content_description">Pengaturan</string>
     <string name="back_content_description">Kembali</string>
     <string name="settings_title">Pengaturan</string>
+    <string name="language_title">Bahasa</string>
+    <string name="language_system_default">Sistem (default)</string>
     <string name="time_format_title">Format waktu</string>
     <string name="format_compact">Ringkas</string>
     <string name="format_detailed">Rinci</string>

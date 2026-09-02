@@ -35,6 +35,8 @@
     <string name="settings_content_description">تنظیمات</string>
     <string name="back_content_description">بازگشت</string>
     <string name="settings_title">تنظیمات</string>
+    <string name="language_title">زبان</string>
+    <string name="language_system_default">سیستم (پیش‌فرض)</string>
     <string name="time_format_title">قالب زمان</string>
     <string name="format_compact">فشرده</string>
     <string name="format_detailed">مفصل</string>

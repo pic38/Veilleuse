@@ -35,6 +35,8 @@
     <string name="settings_content_description">الإعدادات</string>
     <string name="back_content_description">رجوع</string>
     <string name="settings_title">الإعدادات</string>
+    <string name="language_title">اللغة</string>
+    <string name="language_system_default">النظام (افتراضي)</string>
     <string name="time_format_title">تنسيق الوقت</string>
     <string name="format_compact">مضغوط</string>
     <string name="format_detailed">مفصّل</string>

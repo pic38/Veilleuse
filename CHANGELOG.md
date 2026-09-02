@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.0
+
+- Écran Réglages : nouveau sélecteur de langue, tout en haut. Permet
+  de choisir la langue de l'application indépendamment de la langue
+  du système (parmi les 26 langues disponibles), ou de revenir à
+  "Système" pour suivre la langue de l'appareil. Le choix est
+  conservé au redémarrage de l'application.
+
 ## 1.16.0
 
 - Traduction de l'interface dans 24 langues supplémentaires : espagnol,

@@ -35,6 +35,8 @@
     <string name="settings_content_description">การตั้งค่า</string>
     <string name="back_content_description">ย้อนกลับ</string>
     <string name="settings_title">การตั้งค่า</string>
+    <string name="language_title">ภาษา</string>
+    <string name="language_system_default">ระบบ (ค่าเริ่มต้น)</string>
     <string name="time_format_title">รูปแบบเวลา</string>
     <string name="format_compact">กะทัดรัด</string>
     <string name="format_detailed">ละเอียด</string>

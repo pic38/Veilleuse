@@ -35,6 +35,8 @@
     <string name="settings_content_description">Setări</string>
     <string name="back_content_description">Înapoi</string>
     <string name="settings_title">Setări</string>
+    <string name="language_title">Limbă</string>
+    <string name="language_system_default">Sistem (implicit)</string>
     <string name="time_format_title">Format oră</string>
     <string name="format_compact">Compact</string>
     <string name="format_detailed">Detaliat</string>

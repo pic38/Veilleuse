@@ -35,6 +35,8 @@
     <string name="settings_content_description">Configurações</string>
     <string name="back_content_description">Voltar</string>
     <string name="settings_title">Configurações</string>
+    <string name="language_title">Idioma</string>
+    <string name="language_system_default">Sistema (padrão)</string>
     <string name="time_format_title">Formato de hora</string>
     <string name="format_compact">Compacto</string>
     <string name="format_detailed">Detalhado</string>

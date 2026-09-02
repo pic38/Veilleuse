@@ -35,6 +35,8 @@
     <string name="settings_content_description">Ρυθμίσεις</string>
     <string name="back_content_description">Πίσω</string>
     <string name="settings_title">Ρυθμίσεις</string>
+    <string name="language_title">Γλώσσα</string>
+    <string name="language_system_default">Σύστημα (προεπιλογή)</string>
     <string name="time_format_title">Μορφή ώρας</string>
     <string name="format_compact">Συμπαγής</string>
     <string name="format_detailed">Αναλυτική</string>

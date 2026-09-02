@@ -260,6 +260,16 @@
 
             <TextView
                 style="@style/SectionLabel"
+                android:text="@string/language_title" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/languageButton"
+                style="@style/ToggleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/SectionLabel"
                 android:text="@string/time_format_title" />
 
             <com.google.android.material.button.MaterialButtonToggleGroup

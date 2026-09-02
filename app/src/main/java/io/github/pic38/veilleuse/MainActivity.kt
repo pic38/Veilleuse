@@ -23,9 +23,12 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.core.os.LocaleListCompat
 import androidx.core.view.OnApplyWindowInsetsListener
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -253,6 +256,7 @@ class MainActivity : AppCompatActivity() {
             settingsContainer.visibility = View.VISIBLE
         }
         settingsBackButton.setOnClickListener { closeSettings() }
+        setupLanguagePicker()
         timeFormatToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (!isChecked) return@addOnButtonCheckedListener
             timeFormat = when (checkedId) {
@@ -405,6 +409,44 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             container.addView(swatch)
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Langue de l'application
+    // ---------------------------------------------------------------------
+
+    /** Index de la langue actuellement appliquée dans [SUPPORTED_LOCALES], ou -1 pour
+     *  "Système" (aucune langue par app définie). */
+    private fun currentLocaleIndex(): Int {
+        val applied = AppCompatDelegate.getApplicationLocales()
+        if (applied.isEmpty) return -1
+        val tag = applied[0]?.toLanguageTag() ?: return -1
+        return SUPPORTED_LOCALES.indexOfFirst { it.first.equals(tag, ignoreCase = true) }
+    }
+
+    private fun updateLanguageButtonText() = with(binding) {
+        val index = currentLocaleIndex()
+        languageButton.text = if (index == -1) getString(R.string.language_system_default)
+            else SUPPORTED_LOCALES[index].second
+    }
+
+    private fun setupLanguagePicker() = with(binding) {
+        updateLanguageButtonText()
+        languageButton.setOnClickListener {
+            val labels = arrayOf(getString(R.string.language_system_default)) +
+                SUPPORTED_LOCALES.map { it.second }.toTypedArray()
+            val selected = currentLocaleIndex() + 1 // décalage de 1 : l'entrée "Système" est ajoutée en tête
+            AlertDialog.Builder(this@MainActivity)
+                .setTitle(R.string.language_title)
+                .setSingleChoiceItems(labels, selected) { dialog, which ->
+                    val locales = if (which == 0) LocaleListCompat.getEmptyLocaleList()
+                        else LocaleListCompat.forLanguageTags(SUPPORTED_LOCALES[which - 1].first)
+                    AppCompatDelegate.setApplicationLocales(locales)
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
         }
     }
 
@@ -744,5 +786,36 @@ class MainActivity : AppCompatActivity() {
         // au-delà, la couleur d'accentuation devient trop sombre pour rester lisible.
         const val MAX_ACCENT_BLACK_FRACTION = 0.75f
         const val DEFAULT_ACCENT_COLOR = 0xFFFFB300.toInt() // = @color/accent_amber
+
+        // Tag BCP-47 -> nom natif (autonyme), volontairement non traduit : un nom de langue
+        // s'affiche toujours dans sa propre langue, quelle que soit la langue actuelle de l'appli.
+        val SUPPORTED_LOCALES = listOf(
+            "fr" to "Français",
+            "en" to "English",
+            "es" to "Español",
+            "de" to "Deutsch",
+            "pt" to "Português (Portugal)",
+            "pt-BR" to "Português (Brasil)",
+            "it" to "Italiano",
+            "nl" to "Nederlands",
+            "ru" to "Русский",
+            "pl" to "Polski",
+            "tr" to "Türkçe",
+            "ar" to "العربية",
+            "hi" to "हिन्दी",
+            "id" to "Bahasa Indonesia",
+            "vi" to "Tiếng Việt",
+            "th" to "ไทย",
+            "ko" to "한국어",
+            "ja" to "日本語",
+            "zh-CN" to "简体中文",
+            "zh-TW" to "繁體中文",
+            "uk" to "Українська",
+            "ro" to "Română",
+            "el" to "Ελληνικά",
+            "cs" to "Čeština",
+            "sv" to "Svenska",
+            "fa" to "فارسی",
+        )
     }
 }

@@ -35,6 +35,8 @@
     <string name="settings_content_description">設定</string>
     <string name="back_content_description">返回</string>
     <string name="settings_title">設定</string>
+    <string name="language_title">語言</string>
+    <string name="language_system_default">系統（預設）</string>
     <string name="time_format_title">時間格式</string>
     <string name="format_compact">精簡</string>
     <string name="format_detailed">詳細</string>

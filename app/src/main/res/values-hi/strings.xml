@@ -35,6 +35,8 @@
     <string name="settings_content_description">सेटिंग्स</string>
     <string name="back_content_description">वापस</string>
     <string name="settings_title">सेटिंग्स</string>
+    <string name="language_title">भाषा</string>
+    <string name="language_system_default">सिस्टम (डिफ़ॉल्ट)</string>
     <string name="time_format_title">समय प्रारूप</string>
     <string name="format_compact">संक्षिप्त</string>
     <string name="format_detailed">विस्तृत</string>

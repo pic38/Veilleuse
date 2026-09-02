@@ -35,6 +35,8 @@
     <string name="settings_content_description">Impostazioni</string>
     <string name="back_content_description">Indietro</string>
     <string name="settings_title">Impostazioni</string>
+    <string name="language_title">Lingua</string>
+    <string name="language_system_default">Sistema (predefinito)</string>
     <string name="time_format_title">Formato ora</string>
     <string name="format_compact">Compatto</string>
     <string name="format_detailed">Dettagliato</string>

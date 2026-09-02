@@ -35,6 +35,8 @@
     <string name="settings_content_description">Réglages</string>
     <string name="back_content_description">Retour</string>
     <string name="settings_title">Réglages</string>
+    <string name="language_title">Langue</string>
+    <string name="language_system_default">Système (par défaut)</string>
     <string name="time_format_title">Format de l\'heure</string>
     <string name="format_compact">Compact</string>
     <string name="format_detailed">Détaillé</string>

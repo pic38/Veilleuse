@@ -35,6 +35,8 @@
     <string name="settings_content_description">설정</string>
     <string name="back_content_description">뒤로</string>
     <string name="settings_title">설정</string>
+    <string name="language_title">언어</string>
+    <string name="language_system_default">시스템(기본값)</string>
     <string name="time_format_title">시간 형식</string>
     <string name="format_compact">간단히</string>
     <string name="format_detailed">상세히</string>

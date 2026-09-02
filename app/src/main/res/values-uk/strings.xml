@@ -35,6 +35,8 @@
     <string name="settings_content_description">Налаштування</string>
     <string name="back_content_description">Назад</string>
     <string name="settings_title">Налаштування</string>
+    <string name="language_title">Мова</string>
+    <string name="language_system_default">Системна (типова)</string>
     <string name="time_format_title">Формат часу</string>
     <string name="format_compact">Компактний</string>
     <string name="format_detailed">Детальний</string>
