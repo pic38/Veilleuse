@@ -8,7 +8,7 @@ License: GPL-3.0-or-later
 AuthorName: pic38
 SourceCode: https://github.com/pic38/Veilleuse
 IssueTracker: https://github.com/pic38/Veilleuse/issues
-Changelog: https://github.com/pic38/Veilleuse/blob/main/CHANGELOG.md
+Changelog: https://github.com/pic38/Veilleuse/blob/HEAD/CHANGELOG.md
 
 RepoType: git
 Repo: https://github.com/pic38/Veilleuse.git
