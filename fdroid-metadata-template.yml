@@ -22,6 +22,6 @@ Builds:
       - yes
 
 AutoUpdateMode: Version
-UpdateCheckMode: Tags^v(.*)
+UpdateCheckMode: Tags ^v\d+\.\d+\.\d+$
 CurrentVersion: 1.15.1
 CurrentVersionCode: 17
