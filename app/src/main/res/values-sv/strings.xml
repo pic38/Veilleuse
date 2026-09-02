@@ -35,6 +35,7 @@
     <string name="settings_content_description">Inställningar</string>
     <string name="back_content_description">Tillbaka</string>
     <string name="settings_title">Inställningar</string>
+    <string name="feedback_note">Ett förslag? En bugg att rapportera? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">Språk</string>
     <string name="language_system_default">System (standard)</string>
     <string name="time_format_title">Tidsformat</string>

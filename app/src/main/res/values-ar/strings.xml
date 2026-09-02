@@ -35,6 +35,7 @@
     <string name="settings_content_description">الإعدادات</string>
     <string name="back_content_description">رجوع</string>
     <string name="settings_title">الإعدادات</string>
+    <string name="feedback_note">اقتراح؟ خطأ تريد الإبلاغ عنه؟ <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">اللغة</string>
     <string name="language_system_default">النظام (افتراضي)</string>
     <string name="time_format_title">تنسيق الوقت</string>

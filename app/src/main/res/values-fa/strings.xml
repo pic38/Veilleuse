@@ -35,6 +35,7 @@
     <string name="settings_content_description">تنظیمات</string>
     <string name="back_content_description">بازگشت</string>
     <string name="settings_title">تنظیمات</string>
+    <string name="feedback_note">پیشنهادی دارید؟ باگی برای گزارش؟ <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">زبان</string>
     <string name="language_system_default">سیستم (پیش‌فرض)</string>
     <string name="time_format_title">قالب زمان</string>

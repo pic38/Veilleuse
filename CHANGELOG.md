@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.17.1
+
+- Écran Réglages : ajout d'une note au-dessus du sélecteur de langue
+  ("Une suggestion ? Un bug à signaler ?") avec un lien cliquable vers
+  le dépôt GitHub du projet, traduite dans les 26 langues disponibles.
+
 ## 1.17.0
 
 - Écran Réglages : nouveau sélecteur de langue, tout en haut. Permet

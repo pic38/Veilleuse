@@ -35,6 +35,7 @@
     <string name="settings_content_description">Setări</string>
     <string name="back_content_description">Înapoi</string>
     <string name="settings_title">Setări</string>
+    <string name="feedback_note">O sugestie? Un bug de raportat? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">Limbă</string>
     <string name="language_system_default">Sistem (implicit)</string>
     <string name="time_format_title">Format oră</string>

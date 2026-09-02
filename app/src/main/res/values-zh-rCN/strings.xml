@@ -35,6 +35,7 @@
     <string name="settings_content_description">设置</string>
     <string name="back_content_description">返回</string>
     <string name="settings_title">设置</string>
+    <string name="feedback_note">有建议？发现了 Bug？<a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">语言</string>
     <string name="language_system_default">系统（默认）</string>
     <string name="time_format_title">时间格式</string>

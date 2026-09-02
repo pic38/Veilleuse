@@ -35,6 +35,7 @@
     <string name="settings_content_description">Cài đặt</string>
     <string name="back_content_description">Quay lại</string>
     <string name="settings_title">Cài đặt</string>
+    <string name="feedback_note">Có góp ý? Có lỗi cần báo cáo? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">Ngôn ngữ</string>
     <string name="language_system_default">Hệ thống (mặc định)</string>
     <string name="time_format_title">Định dạng giờ</string>

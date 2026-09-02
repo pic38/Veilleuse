@@ -35,6 +35,7 @@
     <string name="settings_content_description">설정</string>
     <string name="back_content_description">뒤로</string>
     <string name="settings_title">설정</string>
+    <string name="feedback_note">제안이 있으신가요? 신고할 버그가 있나요? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">언어</string>
     <string name="language_system_default">시스템(기본값)</string>
     <string name="time_format_title">시간 형식</string>

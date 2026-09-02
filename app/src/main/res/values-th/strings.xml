@@ -35,6 +35,7 @@
     <string name="settings_content_description">การตั้งค่า</string>
     <string name="back_content_description">ย้อนกลับ</string>
     <string name="settings_title">การตั้งค่า</string>
+    <string name="feedback_note">มีข้อเสนอแนะไหม? มีบั๊กที่ต้องแจ้งไหม? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">ภาษา</string>
     <string name="language_system_default">ระบบ (ค่าเริ่มต้น)</string>
     <string name="time_format_title">รูปแบบเวลา</string>

@@ -18,6 +18,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -256,6 +257,7 @@ class MainActivity : AppCompatActivity() {
             settingsContainer.visibility = View.VISIBLE
         }
         settingsBackButton.setOnClickListener { closeSettings() }
+        feedbackNote.movementMethod = LinkMovementMethod.getInstance()
         setupLanguagePicker()
         timeFormatToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
             if (!isChecked) return@addOnButtonCheckedListener

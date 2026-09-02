@@ -35,6 +35,7 @@
     <string name="settings_content_description">Impostazioni</string>
     <string name="back_content_description">Indietro</string>
     <string name="settings_title">Impostazioni</string>
+    <string name="feedback_note">Un suggerimento? Un bug da segnalare? <a href="https://github.com/pic38/Veilleuse">GitHub</a></string>
     <string name="language_title">Lingua</string>
     <string name="language_system_default">Sistema (predefinito)</string>
     <string name="time_format_title">Formato ora</string>
