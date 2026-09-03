@@ -16,14 +16,14 @@ RepoType: git
 Repo: https://github.com/pic38/Veilleuse.git
 
 Builds:
-  - versionName: 1.15.1
-    versionCode: 17
-    commit: v1.15.1
+  - versionName: 1.17.2
+    versionCode: 21
+    commit: v1.17.2
     subdir: app
     gradle:
       - yes
 
 AutoUpdateMode: Version
 UpdateCheckMode: Tags ^v\d+\.\d+\.\d+$
-CurrentVersion: 1.15.1
-CurrentVersionCode: 17
+CurrentVersion: 1.17.2
+CurrentVersionCode: 21
