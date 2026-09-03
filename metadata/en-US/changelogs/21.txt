@@ -1,0 +1,5 @@
+Notable changes since the first version:
+* New settings screen: time format (compact/detailed/HH:MM:SS), UI accent color (palette of hues and white, with a slider to darken it), app language among 26 languages.
+* Refined 100-step fade slider, always spread across the whole chosen duration.
+* Fixed a startup crash related to the color sliders.
+* Link to the GitHub repo, in settings, to report a bug or suggest something.

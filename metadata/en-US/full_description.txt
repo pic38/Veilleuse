@@ -8,4 +8,9 @@ Features:
 * While active, the screen goes fully dark; a single tap brings back the controls (remaining time, Stop button).
 * Once the timer ends, the app closes itself so the phone can go to sleep normally.
 
+Settings screen:
+* Time display format: compact, detailed, or HH:MM:SS.
+* UI accent color: palette of hues and white, with a slider to darken it.
+* App language: 26 languages available, independent of the system language.
+
 No Internet permission, no telemetry, fully free software (GPL-3.0).

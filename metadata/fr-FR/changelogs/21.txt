@@ -1,0 +1,5 @@
+Nouveautés notables depuis la première version :
+* Nouvel écran de réglages : format de l'heure (compact/détaillé/HH:MM:SS), couleur d'accentuation de l'interface (palette de teintes et blanc, avec curseur pour l'assombrir), langue de l'application parmi 26 langues.
+* Curseur de fondu à 100 crans, affiné et toujours réparti sur toute la durée choisie.
+* Correction d'un plantage au démarrage lié aux curseurs de couleur.
+* Lien vers le dépôt GitHub, dans les réglages, pour signaler un bug ou proposer une suggestion.

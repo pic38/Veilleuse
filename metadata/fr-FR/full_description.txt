@@ -8,4 +8,9 @@ Fonctionnalités :
 * En veille, l'écran s'assombrit entièrement ; un simple appui fait réapparaître les commandes (temps restant, bouton Arrêter).
 * Une fois le minuteur écoulé, l'application se ferme d'elle-même pour laisser le téléphone passer en veille normalement.
 
+Écran de réglages :
+* Format d'affichage de l'heure : compact, détaillé ou HH:MM:SS.
+* Couleur d'accentuation de l'interface : palette de teintes et blanc, avec un curseur pour l'assombrir.
+* Langue de l'application : 26 langues disponibles, indépendamment de la langue du système.
+
 Aucune permission Internet, aucune télémétrie, code entièrement libre (GPL-3.0).
