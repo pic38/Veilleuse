@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Ночник</string>
 
     <string name="source_title">Источник света</string>
     <string name="source_flash">Вспышка</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">На этом устройстве вспышка не обнаружена. Вместо неё выбран режим «Экран».</string>
     <string name="fade_flash_unsupported">Плавное затухание вспышки не поддерживается на этом устройстве: применено мгновенное выключение.</string>
     <string name="waiting_for_sleep">Ожидание перехода телефона в спящий режим (настройки Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Ночник v%1$s</string>
 
     <string name="settings_content_description">Настройки</string>
     <string name="back_content_description">Назад</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Nattlampa</string>
 
     <string name="source_title">Ljuskälla</string>
     <string name="source_flash">Blixt</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Ingen blixt hittades på den här enheten. Skärmläge valdes istället.</string>
     <string name="fade_flash_unsupported">Gradvis uttoning av blixten stöds inte på den här enheten: omedelbar avstängning tillämpades.</string>
     <string name="waiting_for_sleep">Väntar på att telefonen ska gå in i viloläge (Android-inställningar)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Nattlampa v%1$s</string>
 
     <string name="settings_content_description">Inställningar</string>
     <string name="back_content_description">Tillbaka</string>

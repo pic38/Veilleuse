@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Lampă de veghe</string>
 
     <string name="source_title">Sursă de lumină</string>
     <string name="source_flash">Blitz</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Nu s-a detectat niciun blitz pe acest dispozitiv. A fost selectat modul Ecran în schimb.</string>
     <string name="fade_flash_unsupported">Stingerea progresivă a blițului nu este acceptată pe acest dispozitiv: s-a aplicat oprirea instantanee.</string>
     <string name="waiting_for_sleep">Se așteaptă ca telefonul să intre în repaus (setări Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Lampă de veghe v%1$s</string>
 
     <string name="settings_content_description">Setări</string>
     <string name="back_content_description">Înapoi</string>

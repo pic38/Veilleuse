@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">小夜灯</string>
 
     <string name="source_title">光源</string>
     <string name="source_flash">闪光灯</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">未在此设备上检测到闪光灯，已改为选择屏幕模式。</string>
     <string name="fade_flash_unsupported">此设备不支持闪光灯渐变熄灭：已应用立即熄灭。</string>
     <string name="waiting_for_sleep">正在等待手机进入休眠状态（Android 设置）…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">小夜灯 v%1$s</string>
 
     <string name="settings_content_description">设置</string>
     <string name="back_content_description">返回</string>

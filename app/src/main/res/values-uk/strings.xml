@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Нічник</string>
 
     <string name="source_title">Джерело світла</string>
     <string name="source_flash">Спалах</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">На цьому пристрої не виявлено спалаху. Натомість обрано режим «Екран».</string>
     <string name="fade_flash_unsupported">Поступове згасання спалаху не підтримується на цьому пристрої: застосовано миттєве вимкнення.</string>
     <string name="waiting_for_sleep">Очікування переходу телефону в режим сну (налаштування Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Нічник v%1$s</string>
 
     <string name="settings_content_description">Налаштування</string>
     <string name="back_content_description">Назад</string>

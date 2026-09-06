@@ -1,0 +1,1 @@
+* The app's name is now translated into each of the 26 supported languages, both on your phone and in the F-Droid listing (e.g. "Night Light" in English, "Nachtlicht" in German, "常夜灯" in Japanese) — "Veilleuse" stays as the name only in French.

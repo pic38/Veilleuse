@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">小夜燈</string>
 
     <string name="source_title">光源</string>
     <string name="source_flash">閃光燈</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">未在此裝置上偵測到閃光燈，已改為選擇螢幕模式。</string>
     <string name="fade_flash_unsupported">此裝置不支援閃光燈漸變熄滅：已套用立即熄滅。</string>
     <string name="waiting_for_sleep">正在等待手機進入休眠狀態（Android 設定）…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">小夜燈 v%1$s</string>
 
     <string name="settings_content_description">設定</string>
     <string name="back_content_description">返回</string>

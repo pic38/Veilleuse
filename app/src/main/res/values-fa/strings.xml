@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">چراغ خواب</string>
 
     <string name="source_title">منبع نور</string>
     <string name="source_flash">فلاش</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">هیچ فلاشی روی این دستگاه شناسایی نشد. در عوض حالت صفحه‌نمایش انتخاب شد.</string>
     <string name="fade_flash_unsupported">محو شدن تدریجی فلاش در این دستگاه پشتیبانی نمی‌شود: خاموش شدن فوری اعمال شد.</string>
     <string name="waiting_for_sleep">در انتظار رفتن گوشی به حالت خواب (تنظیمات اندروید)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">چراغ خواب v%1$s</string>
 
     <string name="settings_content_description">تنظیمات</string>
     <string name="back_content_description">بازگشت</string>

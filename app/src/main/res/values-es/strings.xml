@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Luz nocturna</string>
 
     <string name="source_title">Fuente de luz</string>
     <string name="source_flash">Flash</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">No se detectó flash en este dispositivo. Se seleccionó el modo Pantalla.</string>
     <string name="fade_flash_unsupported">El desvanecimiento progresivo del flash no es compatible con este dispositivo: se aplicó el apagado instantáneo.</string>
     <string name="waiting_for_sleep">Esperando a que el teléfono entre en reposo (ajustes de Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Luz nocturna v%1$s</string>
 
     <string name="settings_content_description">Ajustes</string>
     <string name="back_content_description">Atrás</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Nachtlampje</string>
 
     <string name="source_title">Lichtbron</string>
     <string name="source_flash">Flits</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Geen flits gedetecteerd op dit apparaat. Schermmodus is in plaats daarvan geselecteerd.</string>
     <string name="fade_flash_unsupported">Geleidelijk dimmen van de flits wordt niet ondersteund op dit apparaat: directe uitschakeling toegepast.</string>
     <string name="waiting_for_sleep">Wachten tot de telefoon in slaapstand gaat (Android-instellingen)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Nachtlampje v%1$s</string>
 
     <string name="settings_content_description">Instellingen</string>
     <string name="back_content_description">Terug</string>

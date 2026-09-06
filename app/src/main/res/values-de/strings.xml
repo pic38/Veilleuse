@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Nachtlicht</string>
 
     <string name="source_title">Lichtquelle</string>
     <string name="source_flash">Blitz</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Kein Blitz auf diesem Gerät erkannt. Bildschirmmodus wurde stattdessen ausgewählt.</string>
     <string name="fade_flash_unsupported">Das progressive Überblenden des Blitzes wird auf diesem Gerät nicht unterstützt: Sofortiges Ausschalten angewendet.</string>
     <string name="waiting_for_sleep">Warten, bis das Telefon in den Ruhezustand wechselt (Android-Einstellungen)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Nachtlicht v%1$s</string>
 
     <string name="settings_content_description">Einstellungen</string>
     <string name="back_content_description">Zurück</string>

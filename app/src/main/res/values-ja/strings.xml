@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">常夜灯</string>
 
     <string name="source_title">光源</string>
     <string name="source_flash">フラッシュ</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">この端末ではフラッシュが検出されませんでした。代わりに画面モードが選択されました。</string>
     <string name="fade_flash_unsupported">この端末ではフラッシュの徐々に消灯する機能はサポートされていません。瞬時に消灯します。</string>
     <string name="waiting_for_sleep">スマートフォンがスリープ状態になるのを待っています（Android設定）…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">常夜灯 v%1$s</string>
 
     <string name="settings_content_description">設定</string>
     <string name="back_content_description">戻る</string>

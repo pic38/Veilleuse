@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Gece lambası</string>
 
     <string name="source_title">Işık kaynağı</string>
     <string name="source_flash">Flaş</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Bu cihazda flaş algılanmadı. Bunun yerine Ekran modu seçildi.</string>
     <string name="fade_flash_unsupported">Bu cihazda flaşın kademeli sönümlenmesi desteklenmiyor: anında kapanma uygulandı.</string>
     <string name="waiting_for_sleep">Telefonun uyku moduna geçmesi bekleniyor (Android ayarları)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Gece lambası v%1$s</string>
 
     <string name="settings_content_description">Ayarlar</string>
     <string name="back_content_description">Geri</string>

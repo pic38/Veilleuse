@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">ไฟกลางคืน</string>
 
     <string name="source_title">แหล่งกำเนิดแสง</string>
     <string name="source_flash">แฟลช</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">ไม่พบแฟลชบนอุปกรณ์นี้ จึงเลือกโหมดหน้าจอแทน</string>
     <string name="fade_flash_unsupported">อุปกรณ์นี้ไม่รองรับการหรี่แฟลชแบบค่อยเป็นค่อยไป: ใช้การปิดทันทีแทน</string>
     <string name="waiting_for_sleep">กำลังรอให้โทรศัพท์เข้าสู่โหมดสลีป (การตั้งค่า Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">ไฟกลางคืน v%1$s</string>
 
     <string name="settings_content_description">การตั้งค่า</string>
     <string name="back_content_description">ย้อนกลับ</string>

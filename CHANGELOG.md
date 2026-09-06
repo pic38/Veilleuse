@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.0
+
+- Le nom de l'application est désormais traduit dans chacune des 26
+  langues disponibles, à la fois sur le téléphone (icône/nom
+  installé) et dans la fiche F-Droid : par exemple "Night Light" en
+  anglais, "Nachtlicht" en allemand, "常夜灯" en japonais. "Veilleuse"
+  reste le nom uniquement en français.
+
 ## 1.17.2
 
 - Fix : le lien GitHub intégré au texte de la note (introduit en

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Night Light</string>
 
     <string name="source_title">Light source</string>
     <string name="source_flash">Flash</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">No flash detected on this device. Screen mode selected instead.</string>
     <string name="fade_flash_unsupported">Progressive fade for the flash is not supported on this device: instant shutdown applied.</string>
     <string name="waiting_for_sleep">Waiting for the phone to go to sleep (Android settings)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Night Light v%1$s</string>
 
     <string name="settings_content_description">Settings</string>
     <string name="back_content_description">Back</string>

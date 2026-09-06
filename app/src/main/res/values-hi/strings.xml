@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">रात की रोशनी</string>
 
     <string name="source_title">प्रकाश स्रोत</string>
     <string name="source_flash">फ्लैश</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">इस डिवाइस पर कोई फ्लैश नहीं मिला। इसके बजाय स्क्रीन मोड चुना गया।</string>
     <string name="fade_flash_unsupported">इस डिवाइस पर फ्लैश का क्रमिक फ़ेड समर्थित नहीं है: तुरंत बंद करना लागू किया गया।</string>
     <string name="waiting_for_sleep">फ़ोन के स्लीप मोड में जाने की प्रतीक्षा (Android सेटिंग्स)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">रात की रोशनी v%1$s</string>
 
     <string name="settings_content_description">सेटिंग्स</string>
     <string name="back_content_description">वापस</string>

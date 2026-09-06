@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Luce notturna</string>
 
     <string name="source_title">Sorgente luminosa</string>
     <string name="source_flash">Flash</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Nessun flash rilevato su questo dispositivo. È stata selezionata la modalità Schermo.</string>
     <string name="fade_flash_unsupported">La dissolvenza progressiva del flash non è supportata su questo dispositivo: applicato lo spegnimento istantaneo.</string>
     <string name="waiting_for_sleep">In attesa che il telefono vada in sospensione (impostazioni Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Luce notturna v%1$s</string>
 
     <string name="settings_content_description">Impostazioni</string>
     <string name="back_content_description">Indietro</string>

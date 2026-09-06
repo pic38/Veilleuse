@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">취침등</string>
 
     <string name="source_title">광원</string>
     <string name="source_flash">플래시</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">이 기기에서 플래시를 감지하지 못했습니다. 대신 화면 모드가 선택되었습니다.</string>
     <string name="fade_flash_unsupported">이 기기에서는 플래시의 점진적 페이드가 지원되지 않습니다. 즉시 종료가 적용되었습니다.</string>
     <string name="waiting_for_sleep">휴대폰이 절전 모드로 전환되기를 기다리는 중(Android 설정)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">취침등 v%1$s</string>
 
     <string name="settings_content_description">설정</string>
     <string name="back_content_description">뒤로</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Lampka nocna</string>
 
     <string name="source_title">Źródło światła</string>
     <string name="source_flash">Lampa błyskowa</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Nie wykryto lampy błyskowej w tym urządzeniu. Zamiast tego wybrano tryb Ekran.</string>
     <string name="fade_flash_unsupported">Stopniowe zanikanie lampy błyskowej nie jest obsługiwane na tym urządzeniu: zastosowano natychmiastowe wyłączenie.</string>
     <string name="waiting_for_sleep">Oczekiwanie na przejście telefonu w stan uśpienia (ustawienia Androida)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Lampka nocna v%1$s</string>
 
     <string name="settings_content_description">Ustawienia</string>
     <string name="back_content_description">Wstecz</string>

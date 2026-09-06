@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Đèn ngủ</string>
 
     <string name="source_title">Nguồn sáng</string>
     <string name="source_flash">Đèn flash</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Không phát hiện đèn flash trên thiết bị này. Đã chọn chế độ Màn hình thay thế.</string>
     <string name="fade_flash_unsupported">Thiết bị này không hỗ trợ làm mờ dần đèn flash: đã áp dụng tắt tức thì.</string>
     <string name="waiting_for_sleep">Đang chờ điện thoại chuyển sang chế độ ngủ (cài đặt Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Đèn ngủ v%1$s</string>
 
     <string name="settings_content_description">Cài đặt</string>
     <string name="back_content_description">Quay lại</string>

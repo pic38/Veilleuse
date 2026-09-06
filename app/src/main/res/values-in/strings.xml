@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Veilleuse</string>
+    <string name="app_name">Lampu Tidur</string>
 
     <string name="source_title">Sumber cahaya</string>
     <string name="source_flash">Flash</string>
@@ -30,7 +30,7 @@
     <string name="flash_unavailable">Tidak ada flash yang terdeteksi di perangkat ini. Mode Layar dipilih sebagai gantinya.</string>
     <string name="fade_flash_unsupported">Transisi bertahap pada flash tidak didukung di perangkat ini: mati instan diterapkan.</string>
     <string name="waiting_for_sleep">Menunggu ponsel masuk mode tidur (pengaturan Android)…</string>
-    <string name="version_format">Veilleuse v%1$s</string>
+    <string name="version_format">Lampu Tidur v%1$s</string>
 
     <string name="settings_content_description">Pengaturan</string>
     <string name="back_content_description">Kembali</string>
