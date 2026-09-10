@@ -1,0 +1,1 @@
+* Fix: the app icon wasn't showing up on F-Droid (a generic placeholder was displayed instead). The icon existed only as a vector adaptive icon (XML), with no raster PNG in the APK, which F-Droid's icon extraction can't process. Added raster PNG icons (same design) to the APK.

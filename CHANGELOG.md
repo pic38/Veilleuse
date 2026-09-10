@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.18.1
+
+- Fix : l'icône de l'application n'apparaissait pas sur F-Droid (icône
+  générique affichée à la place). Cause : l'icône n'existait qu'en
+  version vectorielle adaptative (XML), sans image PNG raster dans
+  l'APK, ce que l'outil d'extraction d'icône de F-Droid ne sait pas
+  traiter. Ajout d'icônes PNG raster (mêmes dessins) dans l'APK.
+
 ## 1.18.0
 
 - Le nom de l'application est désormais traduit dans chacune des 26

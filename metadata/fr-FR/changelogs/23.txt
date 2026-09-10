@@ -1,0 +1,1 @@
+* Correction : l'icône de l'application n'apparaissait pas sur F-Droid (une icône générique était affichée à la place). Cause : l'icône n'existait qu'en version vectorielle adaptative (XML), sans image PNG dans l'APK, ce que l'extraction d'icône de F-Droid ne sait pas traiter. Ajout d'icônes PNG (mêmes dessins) dans l'APK.
