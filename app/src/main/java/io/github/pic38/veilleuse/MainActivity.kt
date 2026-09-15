@@ -263,11 +263,15 @@ class MainActivity : AppCompatActivity() {
         brightnessSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: Slider) {
                 isPreviewingScreenBrightness = true
+                // Masque aussi les barres système (comme la veilleuse réelle une fois lancée) :
+                // sans ça, leur fond system reste opaque et n'est pas teinté par l'aperçu.
+                enterImmersiveMode()
                 updateScreenBrightnessPreview()
             }
 
             override fun onStopTrackingTouch(slider: Slider) {
                 isPreviewingScreenBrightness = false
+                exitImmersiveMode()
                 stopScreenBrightnessPreview()
             }
         })
@@ -899,6 +903,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (isPreviewingScreenBrightness) {
             isPreviewingScreenBrightness = false
+            exitImmersiveMode()
             stopScreenBrightnessPreview()
         }
     }
