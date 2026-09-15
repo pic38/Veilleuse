@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.19.0
+
+- Aperçu en direct en mode Écran : pendant que vous ajustez le slider
+  de luminosité, l'écran prend la couleur et la luminosité telles
+  qu'elles seront une fois la veilleuse lancée.
+- Nouveau slider "Luminosité du flash" (si votre appareil le permet) :
+  même aperçu en direct, le flash s'allume au niveau réglé pendant
+  que vous ajustez le curseur.
+- Journal de plantage caché : en cas de plantage de l'app, un journal
+  est désormais conservé. Accessible par un appui long sur le numéro
+  de version, avec un bouton pour le copier et un lien pour signaler
+  le problème sur GitHub.
+
 ## 1.18.1
 
 - Fix : l'icône de l'application n'apparaissait pas sur F-Droid (icône

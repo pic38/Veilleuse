@@ -1,0 +1,3 @@
+* Live preview in Screen mode: while dragging the brightness slider, the screen shows the color and brightness exactly as it will look once the night light is running.
+* New "Flash brightness" slider (on supported devices): same live preview — the flash turns on at the set level while you're adjusting the slider.
+* Hidden crash log: if the app ever crashes, a log is now kept. Accessible via a long-press on the version number, with a button to copy it and a link to report the issue on GitHub.
