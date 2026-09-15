@@ -106,7 +106,17 @@ class MainActivity : AppCompatActivity() {
         // seul l'écran "veilleuse" actif doit être edge-to-edge (voir enter/exitImmersiveMode).
         val padForSystemBars = OnApplyWindowInsetsListener { view, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            view.setPadding(view.paddingLeft, bars.top, view.paddingRight, bars.bottom)
+            // Pendant l'aperçu de luminosité (mode immersif temporaire, voir
+            // brightnessSlider.addOnSliderTouchListener), les insets des barres tombent à 0
+            // dès qu'elles se masquent : sans ce garde-fou, le padding de setupContainer se
+            // réajuste aussitôt, ce qui décale tout le bloc de contrôles (poussé par le Space
+            // à poids flexible) et fait glisser le slider hors du doigt. On fige donc le
+            // padding sur sa valeur courante pendant l'aperçu ; il se remet à jour normalement
+            // dès la fin du glissement (isPreviewingScreenBrightness repasse à false avant
+            // exitImmersiveMode(), donc les vrais insets sont bien réappliqués ensuite).
+            if (view !== binding.setupContainer || !isPreviewingScreenBrightness) {
+                view.setPadding(view.paddingLeft, bars.top, view.paddingRight, bars.bottom)
+            }
             insets
         }
         ViewCompat.setOnApplyWindowInsetsListener(binding.setupContainer, padForSystemBars)
