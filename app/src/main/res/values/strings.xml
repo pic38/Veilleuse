@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Teinte chaude</string>
     <string name="brightness_title">Luminosité</string>
+    <string name="flash_brightness_title">Luminosité du flash</string>
 
     <string name="duration_title">Durée avant extinction</string>
 
@@ -45,4 +46,15 @@
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Couleur d\'accentuation</string>
     <string name="accent_black_title">Vers le noir</string>
+
+    <!-- Fonction cachée (non visible en usage normal) : journal de plantage,
+         accessible par appui long sur versionText. Non traduite dans toutes les
+         langues (outil de diagnostic, pas une fonctionnalité utilisateur). -->
+    <string name="crash_log_dialog_title">Journal de plantage</string>
+    <string name="crash_log_none">Aucun plantage enregistré.</string>
+    <string name="crash_log_explanation">Un plantage de l\'application a été détecté. Copiez le journal ci-dessous, puis ouvrez une issue sur GitHub en collant son contenu pour aider à corriger le problème.</string>
+    <string name="crash_log_copy_button">Copier le journal</string>
+    <string name="crash_log_github_button">Ouvrir une issue GitHub</string>
+    <string name="crash_log_copied_toast">Journal copié dans le presse-papiers</string>
+    <string name="crash_log_close_button">Fermer</string>
 </resources>

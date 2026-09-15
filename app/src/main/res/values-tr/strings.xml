@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Sıcak ton</string>
     <string name="brightness_title">Parlaklık</string>
+    <string name="flash_brightness_title">Flaş parlaklığı</string>
 
     <string name="duration_title">Kapanmadan önceki süre</string>
 

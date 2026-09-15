@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Теплий відтінок</string>
     <string name="brightness_title">Яскравість</string>
+    <string name="flash_brightness_title">Яскравість спалаху</string>
 
     <string name="duration_title">Тривалість до вимкнення</string>
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Warme tint</string>
     <string name="brightness_title">Helderheid</string>
+    <string name="flash_brightness_title">Flitshelderheid</string>
 
     <string name="duration_title">Duur tot uitschakelen</string>
 

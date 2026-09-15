@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">رنگ گرم</string>
     <string name="brightness_title">روشنایی</string>
+    <string name="flash_brightness_title">روشنایی فلاش</string>
 
     <string name="duration_title">مدت زمان تا خاموش شدن</string>
 

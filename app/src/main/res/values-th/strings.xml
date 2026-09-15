@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">โทนสีอุ่น</string>
     <string name="brightness_title">ความสว่าง</string>
+    <string name="flash_brightness_title">ความสว่างของแฟลช</string>
 
     <string name="duration_title">ระยะเวลาก่อนปิด</string>
 

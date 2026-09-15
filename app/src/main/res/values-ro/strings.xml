@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Nuanță caldă</string>
     <string name="brightness_title">Luminozitate</string>
+    <string name="flash_brightness_title">Luminozitatea blițului</string>
 
     <string name="duration_title">Durată înainte de oprire</string>
 

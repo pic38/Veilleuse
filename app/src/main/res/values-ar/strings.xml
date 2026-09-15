@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">درجة اللون الدافئ</string>
     <string name="brightness_title">السطوع</string>
+    <string name="flash_brightness_title">سطوع الفلاش</string>
 
     <string name="duration_title">المدة قبل الإطفاء</string>
 

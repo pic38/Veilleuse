@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">따뜻한 색조</string>
     <string name="brightness_title">밝기</string>
+    <string name="flash_brightness_title">플래시 밝기</string>
 
     <string name="duration_title">꺼지기까지의 시간</string>
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Warm tint</string>
     <string name="brightness_title">Brightness</string>
+    <string name="flash_brightness_title">Flash brightness</string>
 
     <string name="duration_title">Duration before shutdown</string>
 
@@ -45,4 +46,12 @@
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Accent color</string>
     <string name="accent_black_title">Toward black</string>
+
+    <string name="crash_log_dialog_title">Crash log</string>
+    <string name="crash_log_none">No crash recorded.</string>
+    <string name="crash_log_explanation">An app crash was detected. Copy the log below, then open a GitHub issue and paste it in to help fix the problem.</string>
+    <string name="crash_log_copy_button">Copy log</string>
+    <string name="crash_log_github_button">Open a GitHub issue</string>
+    <string name="crash_log_copied_toast">Log copied to clipboard</string>
+    <string name="crash_log_close_button">Close</string>
 </resources>

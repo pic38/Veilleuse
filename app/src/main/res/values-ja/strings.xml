@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">暖色の濃さ</string>
     <string name="brightness_title">明るさ</string>
+    <string name="flash_brightness_title">フラッシュの明るさ</string>
 
     <string name="duration_title">消灯までの時間</string>
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Ciepły odcień</string>
     <string name="brightness_title">Jasność</string>
+    <string name="flash_brightness_title">Jasność lampy błyskowej</string>
 
     <string name="duration_title">Czas do wyłączenia</string>
 

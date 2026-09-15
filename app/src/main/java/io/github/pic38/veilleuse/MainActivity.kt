@@ -1,6 +1,8 @@
 package io.github.pic38.veilleuse
 
 import android.content.BroadcastReceiver
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -23,6 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +38,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.google.android.material.slider.Slider
 import io.github.pic38.veilleuse.databinding.ActivityMainBinding
 import kotlin.math.floor
 import kotlin.math.roundToInt
@@ -65,9 +69,19 @@ class MainActivity : AppCompatActivity() {
     private var useFlash = true
     private var warmFraction = 0.4f
     private var brightnessFraction = 0.6f
+    private var flashBrightnessFraction = 1f
     private var accentColor: Int = DEFAULT_ACCENT_COLOR
     private var accentBlackFraction = 0f
     private var timeFormat: TimeFormat = TimeFormat.COMPACT
+
+    // Niveau de torche de départ retenu au lancement (dérivé de [flashBrightnessFraction]) :
+    // le fondu part de ce niveau plutôt que toujours de [maxTorchStrength].
+    private var flashFadeStartLevel = 1
+
+    // Aperçu en direct pendant le glissement des sliders de luminosité (écran/flash), avant
+    // même de lancer la veilleuse : voir addOnSliderTouchListener dans setupUi().
+    private var isPreviewingScreenBrightness = false
+    private var isPreviewingFlashBrightness = false
 
     private val handler = Handler(Looper.getMainLooper())
     private var hideControlsRunnable: Runnable? = null
@@ -149,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         useFlash = prefs.getBoolean("use_flash", true) && hasFlash
         warmFraction = prefs.getFloat("warm_fraction", 0.4f)
         brightnessFraction = prefs.getFloat("brightness_fraction", 0.6f)
+        flashBrightnessFraction = prefs.getFloat("flash_brightness_fraction", 1f)
         isProgressive = prefs.getBoolean("progressive", false)
         accentColor = prefs.getInt("accent_color", DEFAULT_ACCENT_COLOR)
         accentBlackFraction = prefs.getFloat("accent_black_fraction", 0f).coerceAtMost(MAX_ACCENT_BLACK_FRACTION)
@@ -161,6 +176,7 @@ class MainActivity : AppCompatActivity() {
             .putBoolean("use_flash", useFlash)
             .putFloat("warm_fraction", warmFraction)
             .putFloat("brightness_fraction", brightnessFraction)
+            .putFloat("flash_brightness_fraction", flashBrightnessFraction)
             .putBoolean("progressive", isProgressive)
             .putFloat("duration_min", binding.durationSlider.value)
             .putFloat("fade_seconds", binding.fadeDurationSlider.value)
@@ -190,6 +206,8 @@ class MainActivity : AppCompatActivity() {
         if (useFlash && hasFlash) sourceToggleGroup.check(R.id.btnSourceFlash)
         else sourceToggleGroup.check(R.id.btnSourceScreen)
         screenOptionsGroup.visibility = if (useFlash && hasFlash) View.GONE else View.VISIBLE
+        flashOptionsGroup.visibility =
+            if (useFlash && hasFlash && supportsVariableTorch) View.VISIBLE else View.GONE
 
         if (isProgressive) extinctionToggleGroup.check(R.id.btnExtinctionProgressive)
         else extinctionToggleGroup.check(R.id.btnExtinctionInstant)
@@ -201,6 +219,8 @@ class MainActivity : AppCompatActivity() {
             .coerceIn(warmColorSlider.valueFrom, warmColorSlider.valueTo)
         brightnessSlider.value = (brightnessFraction * 100f).roundToInt().toFloat()
             .coerceIn(brightnessSlider.valueFrom, brightnessSlider.valueTo)
+        flashBrightnessSlider.value = (flashBrightnessFraction * 100f).roundToInt().toFloat()
+            .coerceIn(flashBrightnessSlider.valueFrom, flashBrightnessSlider.valueTo)
         accentBlackSlider.value = (accentBlackFraction * 100f).roundToInt().toFloat()
             .coerceIn(accentBlackSlider.valueFrom, accentBlackSlider.valueTo)
 
@@ -213,6 +233,7 @@ class MainActivity : AppCompatActivity() {
             if (!isChecked) return@addOnButtonCheckedListener
             useFlash = checkedId == R.id.btnSourceFlash
             screenOptionsGroup.visibility = if (useFlash) View.GONE else View.VISIBLE
+            flashOptionsGroup.visibility = if (useFlash && supportsVariableTorch) View.VISIBLE else View.GONE
         }
 
         extinctionToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
@@ -233,10 +254,39 @@ class MainActivity : AppCompatActivity() {
         warmColorSlider.addOnChangeListener { _, value, _ ->
             warmFraction = value / 100f
             updateColorPreview()
+            if (isPreviewingScreenBrightness) updateScreenBrightnessPreview()
         }
         brightnessSlider.addOnChangeListener { _, value, _ ->
             brightnessFraction = value / 100f
+            if (isPreviewingScreenBrightness) updateScreenBrightnessPreview()
         }
+        brightnessSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
+                isPreviewingScreenBrightness = true
+                updateScreenBrightnessPreview()
+            }
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                isPreviewingScreenBrightness = false
+                stopScreenBrightnessPreview()
+            }
+        })
+        flashBrightnessSlider.addOnChangeListener { _, value, _ ->
+            flashBrightnessFraction = value / 100f
+            if (isPreviewingFlashBrightness) setTorchStrength(torchLevelForFraction(flashBrightnessFraction))
+        }
+        flashBrightnessSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
+                isPreviewingFlashBrightness = true
+                setTorch(true)
+                setTorchStrength(torchLevelForFraction(flashBrightnessFraction))
+            }
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                isPreviewingFlashBrightness = false
+                setTorch(false)
+            }
+        })
         accentBlackSlider.addOnChangeListener { _, value, _ ->
             accentBlackFraction = value / 100f
             prefs.edit().putFloat("accent_black_fraction", accentBlackFraction).apply()
@@ -259,6 +309,12 @@ class MainActivity : AppCompatActivity() {
         settingsBackButton.setOnClickListener { closeSettings() }
         githubButton.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/pic38/Veilleuse")))
+        }
+        // Fonction cachée, non visible en usage normal (voir CrashLogger) : appui long sur
+        // le numéro de version pour accéder au journal du dernier plantage, s'il y en a un.
+        versionText.setOnLongClickListener {
+            showCrashLogDialog()
+            true
         }
         setupLanguagePicker()
         timeFormatToggleGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
@@ -326,6 +382,28 @@ class MainActivity : AppCompatActivity() {
         drawable.setColor(computeWarmColor(warmFraction))
     }
 
+    /** Pendant le glissement du slider de luminosité (mode Écran), avant même de lancer la
+     *  veilleuse : donne un aperçu fidèle en teintant tout l'écran de configuration exactement
+     *  comme il apparaîtra une fois lancé (même calcul que lightSurface.alpha sur fond noir en
+     *  mode veille, ici pré-mélangé en une seule couleur opaque), et en appliquant réellement
+     *  la luminosité d'écran — pas seulement une vignette d'aperçu. */
+    private fun updateScreenBrightnessPreview() = with(binding) {
+        val blended = ColorUtils.blendARGB(
+            ContextCompat.getColor(this@MainActivity, R.color.oled_black),
+            computeWarmColor(warmFraction),
+            brightnessFraction
+        )
+        setupContainer.setBackgroundColor(blended)
+        window.attributes = window.attributes.apply { screenBrightness = brightnessFraction }
+    }
+
+    private fun stopScreenBrightnessPreview() = with(binding) {
+        setupContainer.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.oled_black))
+        window.attributes = window.attributes.apply {
+            screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
+        }
+    }
+
     // ---------------------------------------------------------------------
     // Couleur d'accentuation (réglages)
     // ---------------------------------------------------------------------
@@ -359,7 +437,10 @@ class MainActivity : AppCompatActivity() {
             button.rippleColor = rippleStates
         }
 
-        listOf(durationSlider, fadeDurationSlider, warmColorSlider, brightnessSlider, accentBlackSlider).forEach { slider ->
+        listOf(
+            durationSlider, fadeDurationSlider, warmColorSlider, brightnessSlider,
+            flashBrightnessSlider, accentBlackSlider
+        ).forEach { slider ->
             slider.trackActiveTintList = ColorStateList.valueOf(color)
             slider.thumbTintList = ColorStateList.valueOf(color)
             slider.haloTintList = ColorStateList.valueOf(dim)
@@ -477,7 +558,8 @@ class MainActivity : AppCompatActivity() {
             lightSurface.setBackgroundColor(Color.BLACK)
             setTorch(true)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && supportsVariableTorch) {
-                setTorchStrength(maxTorchStrength)
+                flashFadeStartLevel = torchLevelForFraction(flashBrightnessFraction)
+                setTorchStrength(flashFadeStartLevel)
             }
         } else {
             lightSurface.alpha = brightnessFraction
@@ -538,9 +620,9 @@ class MainActivity : AppCompatActivity() {
      *  l'œil moyenne les alternances rapides en une luminosité intermédiaire). */
     private fun applyFadeProgress(fraction: Float) {
         if (useFlash && hasFlash) {
-            val target = maxTorchStrength - fraction * (maxTorchStrength - 1)
-            val lower = floor(target).toInt().coerceIn(1, maxTorchStrength)
-            val upper = (lower + 1).coerceAtMost(maxTorchStrength)
+            val target = flashFadeStartLevel - fraction * (flashFadeStartLevel - 1)
+            val lower = floor(target).toInt().coerceIn(1, flashFadeStartLevel)
+            val upper = (lower + 1).coerceAtMost(flashFadeStartLevel)
             val onSteps = ((target - lower).coerceIn(0f, 1f) * DITHER_STEPS).roundToInt()
             val level = if (fadeTickIndex % DITHER_STEPS < onSteps) upper else lower
             setTorchStrength(level)
@@ -648,6 +730,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Convertit une fraction 0..1 (position du slider de luminosité du flash) en un niveau
+     *  de torche matériel 1..[maxTorchStrength]. */
+    private fun torchLevelForFraction(fraction: Float): Int =
+        (1 + fraction.coerceIn(0f, 1f) * (maxTorchStrength - 1)).roundToInt().coerceIn(1, maxTorchStrength)
+
     // ---------------------------------------------------------------------
     // Couleur chaude
     // ---------------------------------------------------------------------
@@ -749,6 +836,39 @@ class MainActivity : AppCompatActivity() {
         return getString(R.string.time_remaining_format, formatCountdown(totalSeconds))
     }
 
+    // ---------------------------------------------------------------------
+    // Journal de plantage (fonction cachée, voir CrashLogger + versionText.setOnLongClickListener)
+    // ---------------------------------------------------------------------
+
+    private fun showCrashLogDialog() {
+        val log = CrashLogger.read(this)
+        val dialogView = layoutInflater.inflate(R.layout.dialog_crash_log, null)
+        dialogView.findViewById<TextView>(R.id.crashLogText).text =
+            log ?: getString(R.string.crash_log_none)
+        dialogView.findViewById<TextView>(R.id.crashLogExplanation).visibility =
+            if (log != null) View.VISIBLE else View.GONE
+
+        val builder = AlertDialog.Builder(this)
+            .setTitle(R.string.crash_log_dialog_title)
+            .setView(dialogView)
+            .setNegativeButton(R.string.crash_log_close_button, null)
+
+        if (log != null) {
+            builder.setNeutralButton(R.string.crash_log_github_button) { _, _ ->
+                startActivity(
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/pic38/Veilleuse/issues/new"))
+                )
+            }
+            builder.setPositiveButton(R.string.crash_log_copy_button) { _, _ ->
+                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                clipboard.setPrimaryClip(ClipData.newPlainText("Veilleuse crash log", log))
+                Toast.makeText(this, R.string.crash_log_copied_toast, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        builder.show()
+    }
+
     private fun closeSettings() = with(binding) {
         settingsContainer.visibility = View.GONE
         setupContainer.visibility = View.VISIBLE
@@ -769,6 +889,17 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         if (::binding.isInitialized && binding.runningContainer.visibility == View.VISIBLE && isFinishing) {
             setTorch(false)
+        }
+        // Sécurité : si l'app passe en arrière-plan pendant un aperçu en direct (doigt encore
+        // sur un slider de luminosité), ne pas laisser le flash allumé ou la luminosité d'écran
+        // forcée derrière soi.
+        if (isPreviewingFlashBrightness) {
+            isPreviewingFlashBrightness = false
+            setTorch(false)
+        }
+        if (isPreviewingScreenBrightness) {
+            isPreviewingScreenBrightness = false
+            stopScreenBrightnessPreview()
         }
     }
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Varm ton</string>
     <string name="brightness_title">Ljusstyrka</string>
+    <string name="flash_brightness_title">Blixtljusstyrka</string>
 
     <string name="duration_title">Tid innan avstängning</string>
 

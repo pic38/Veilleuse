@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Corak hangat</string>
     <string name="brightness_title">Kecerahan</string>
+    <string name="flash_brightness_title">Kecerahan Flash</string>
 
     <string name="duration_title">Durasi sebelum mati</string>
 

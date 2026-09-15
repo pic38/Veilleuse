@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Sắc ấm</string>
     <string name="brightness_title">Độ sáng</string>
+    <string name="flash_brightness_title">Độ sáng đèn flash</string>
 
     <string name="duration_title">Thời gian trước khi tắt</string>
 

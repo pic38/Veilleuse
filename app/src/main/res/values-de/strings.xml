@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Warmton</string>
     <string name="brightness_title">Helligkeit</string>
+    <string name="flash_brightness_title">Blitzhelligkeit</string>
 
     <string name="duration_title">Dauer bis zum Ausschalten</string>
 

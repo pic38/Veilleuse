@@ -67,6 +67,30 @@
                     android:text="@string/source_screen" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
+            <!-- Options flash : uniquement affiché si le matériel supporte des niveaux de
+                 torche variables (voir supportsVariableTorch) ; sinon le flash reste
+                 tout-ou-rien et ce groupe n'est jamais rendu visible. -->
+            <LinearLayout
+                android:id="@+id/flashOptionsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/flashBrightnessLabel"
+                    style="@style/SectionLabel"
+                    android:text="@string/flash_brightness_title" />
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/flashBrightnessSlider"
+                    style="@style/AmberSlider"
+                    android:valueFrom="0"
+                    android:valueTo="100"
+                    android:stepSize="1"
+                    android:value="100" />
+            </LinearLayout>
+
             <!-- Options écran -->
             <LinearLayout
                 android:id="@+id/screenOptionsGroup"

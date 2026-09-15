@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">गर्म रंगत</string>
     <string name="brightness_title">चमक</string>
+    <string name="flash_brightness_title">फ्लैश की चमक</string>
 
     <string name="duration_title">बंद होने से पहले की अवधि</string>
 

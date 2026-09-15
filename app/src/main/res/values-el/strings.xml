@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Θερμή απόχρωση</string>
     <string name="brightness_title">Φωτεινότητα</string>
+    <string name="flash_brightness_title">Φωτεινότητα φλας</string>
 
     <string name="duration_title">Διάρκεια πριν το σβήσιμο</string>
 

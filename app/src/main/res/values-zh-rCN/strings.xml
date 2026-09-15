@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">暖色调</string>
     <string name="brightness_title">亮度</string>
+    <string name="flash_brightness_title">闪光灯亮度</string>
 
     <string name="duration_title">熄灭前的时长</string>
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Tom quente</string>
     <string name="brightness_title">Brilho</string>
+    <string name="flash_brightness_title">Brilho do flash</string>
 
     <string name="duration_title">Duração até o desligamento</string>
 

@@ -8,6 +8,7 @@
 
     <string name="warm_color_title">Tono cálido</string>
     <string name="brightness_title">Brillo</string>
+    <string name="flash_brightness_title">Brillo del flash</string>
 
     <string name="duration_title">Duración antes del apagado</string>
 
