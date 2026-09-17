@@ -1,11 +1,16 @@
-Veilleuse transforme votre téléphone en veilleuse simple, sans publicité ni traceur.
+Nouveauté de la version 1.19.0
+* Aperçu en direct : pendant que vous ajustez le slider de luminosité, l'écran prend la couleur et la luminosité telles qu'elles seront une fois la veilleuse lancée.
+* Nouveau slider "Luminosité du flash" (si votre appareil le permet) : même aperçu en direct, le flash s'allume au niveau réglé pendant que vous ajustez le curseur.
+* Journal de plantage caché : en cas de plantage de l'app, un journal est désormais conservé. Accessible par un appui long sur le numéro de version, avec un bouton pour le copier et un lien pour signaler le problème sur GitHub.
+
+Transformez votre téléphone en veilleuse, simple, sans publicité ni traceur.
 
 Fonctionnalités :
 * Deux sources de lumière au choix : le flash de l'appareil photo, ou l'écran avec une teinte chaude réglable.
 * Durée réglable avant extinction automatique (de 1 à 120 minutes).
 * Extinction instantanée ou progressive (fondu), avec durée du fondu réglable.
 * Interface entièrement noir pur (OLED), pour économiser la batterie et ne pas éblouir.
-* En veille, l'écran s'assombrit entièrement ; un simple appui fait réapparaître les commandes (temps restant, bouton Arrêter).
+* Un appui fait réapparaître les commandes (temps restant, bouton Arrêter).
 * Une fois le minuteur écoulé, l'application se ferme d'elle-même pour laisser le téléphone passer en veille normalement.
 
 Écran de réglages :

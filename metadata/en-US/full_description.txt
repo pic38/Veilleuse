@@ -1,11 +1,16 @@
-Veilleuse turns your phone into a simple night light, with no ads and no trackers.
+What's new in version 1.19.0
+* Live preview: while dragging the brightness slider, the screen shows the color and brightness exactly as it will look once the night light is running.
+* New "Flash brightness" slider (on supported devices): same live preview — the flash turns on at the set level while you're adjusting the slider.
+* Hidden crash log: if the app ever crashes, a log is now kept. Accessible via a long-press on the version number, with a button to copy it and a link to report the issue on GitHub.
+
+Turn your phone into a simple night light, with no ads and no trackers.
 
 Features:
 * Two light sources: the camera flash, or the screen with an adjustable warm tint.
 * Adjustable duration before automatic shutdown (1 to 120 minutes).
 * Instant or progressive (fade) shutdown, with adjustable fade duration.
 * Fully pure-black (OLED) interface, to save battery and avoid glare.
-* While active, the screen goes fully dark; a single tap brings back the controls (remaining time, Stop button).
+* A tap brings back the controls (remaining time, Stop button).
 * Once the timer ends, the app closes itself so the phone can go to sleep normally.
 
 Settings screen:
