@@ -1,0 +1,3 @@
+* Accent color: the "Toward black" slider is replaced by two sliders, Saturation and Brightness. Pastel, beige or brown tones are now possible, and the swatches update to preview the result.
+* Text on the accent color switches between white and black for the best contrast.
+* Small screens: spacing tightens automatically to avoid needless scrolling; the time format now fits on a single line.

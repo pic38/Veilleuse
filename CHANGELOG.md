@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.20.0
+
+- Couleur d'accentuation : le curseur "Vers le noir" est remplacé par
+  deux curseurs, Saturation et Luminosité, appliqués à la teinte
+  choisie. Permet des tons pastel, du beige ou du marron (orange
+  assombri). Les pastilles se recolorent pour montrer le résultat, et
+  le réglage "Vers le noir" existant est conservé (converti en
+  luminosité).
+- Le texte posé sur la couleur d'accentuation passe en blanc ou en noir
+  selon le meilleur contraste (lisible sur un accent foncé comme clair).
+- Petits écrans : les espacements se resserrent automatiquement pour
+  éviter un défilement inutile, sans changement sur les écrans où tout
+  tient déjà. Le format de l'heure tient désormais sur une seule ligne.
+
 ## 1.19.0
 
 - Aperçu en direct en mode Écran : pendant que vous ajustez le slider

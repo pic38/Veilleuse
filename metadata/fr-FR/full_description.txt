@@ -1,7 +1,7 @@
-Nouveauté de la version 1.19.0
-* Aperçu en direct : pendant que vous ajustez le slider de luminosité, l'écran prend la couleur et la luminosité telles qu'elles seront une fois la veilleuse lancée.
-* Nouveau slider "Luminosité du flash" (si votre appareil le permet) : même aperçu en direct, le flash s'allume au niveau réglé pendant que vous ajustez le curseur.
-* Journal de plantage caché : en cas de plantage de l'app, un journal est désormais conservé. Accessible par un appui long sur le numéro de version, avec un bouton pour le copier et un lien pour signaler le problème sur GitHub.
+Nouveauté de la version 1.20.0
+* Couleur d'accentuation : le curseur "Vers le noir" est remplacé par deux curseurs, Saturation et Luminosité. Tons pastel, beige ou marron désormais possibles, et les pastilles se recolorent pour montrer le résultat.
+* Le texte posé sur la couleur d'accentuation passe en blanc ou en noir selon le meilleur contraste.
+* Petits écrans : les espacements se resserrent automatiquement pour éviter un défilement inutile ; le format de l'heure tient sur une seule ligne.
 
 Transformez votre téléphone en veilleuse, simple, sans publicité ni traceur.
 
@@ -15,7 +15,7 @@ Fonctionnalités :
 
 Écran de réglages :
 * Format d'affichage de l'heure : compact, détaillé ou HH:MM:SS.
-* Couleur d'accentuation de l'interface : palette de teintes et blanc, avec un curseur pour l'assombrir.
+* Couleur d'accentuation de l'interface : palette de teintes et blanc, avec saturation et luminosité réglables (pastel, marron...).
 * Langue de l'application : 26 langues disponibles, indépendamment de la langue du système.
 
 Aucune permission Internet, aucune télémétrie, code entièrement libre (GPL-3.0).
