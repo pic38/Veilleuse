@@ -319,35 +319,38 @@
                 style="@style/SectionLabel"
                 android:text="@string/time_format_title" />
 
+            <!-- Sur une seule ligne (gain de place vertical, voir VerticalAutoFit) : le texte
+                 rétrécit automatiquement pour les libellés longs (ex. "Gedetailleerd") ; hauteur
+                 match_parent pour que le bouton au texte réduit reste aligné sur les autres. -->
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/timeFormatToggleGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFormatCompact"
-                    style="@style/ToggleButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/ToggleButton.Compact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/format_compact" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFormatDetailed"
-                    style="@style/ToggleButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/ToggleButton.Compact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/format_detailed" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFormatClock"
-                    style="@style/ToggleButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/ToggleButton.Compact"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text="@string/format_clock" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -369,17 +372,33 @@
                     android:paddingBottom="8dp" />
             </HorizontalScrollView>
 
+            <!-- Saturation (pastel <-> vif) et luminosité (sombre <-> clair) appliquées à la
+                 teinte choisie dans la palette : voir effectiveAccentColor. -->
             <TextView
                 style="@style/SectionLabel"
-                android:text="@string/accent_black_title" />
+                android:text="@string/accent_saturation_title" />
 
             <com.google.android.material.slider.Slider
-                android:id="@+id/accentBlackSlider"
+                android:id="@+id/accentSaturationSlider"
                 style="@style/AmberSlider"
                 android:valueFrom="0"
-                android:valueTo="75"
+                android:valueTo="100"
                 android:stepSize="1"
-                android:value="0" />
+                android:value="100" />
+
+            <TextView
+                style="@style/SectionLabel"
+                android:text="@string/brightness_title" />
+
+            <!-- valueFrom doit rester cohérent avec MIN_ACCENT_BRIGHTNESS (MainActivity) :
+                 en dessous, l'accent devient trop sombre pour rester lisible sur fond noir. -->
+            <com.google.android.material.slider.Slider
+                android:id="@+id/accentBrightnessSlider"
+                style="@style/AmberSlider"
+                android:valueFrom="25"
+                android:valueTo="100"
+                android:stepSize="1"
+                android:value="100" />
 
         </LinearLayout>
     </ScrollView>

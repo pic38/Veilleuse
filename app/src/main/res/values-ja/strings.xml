@@ -45,5 +45,5 @@
     <string name="format_detailed">詳細</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">アクセントカラー</string>
-    <string name="accent_black_title">黒に近づける</string>
+    <string name="accent_saturation_title">彩度</string>
 </resources>

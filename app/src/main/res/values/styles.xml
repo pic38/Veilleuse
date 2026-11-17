@@ -17,6 +17,18 @@
         <item name="cornerRadius">18dp</item>
     </style>
 
+    <!-- Bouton de choix étroit (3 par ligne) : marges internes réduites et texte qui
+         rétrécit si besoin plutôt que de passer sur deux lignes. -->
+    <style name="ToggleButton.Compact">
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">9sp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+        <item name="autoSizeStepGranularity">1sp</item>
+    </style>
+
     <style name="AmberSlider" parent="Widget.MaterialComponents.Slider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

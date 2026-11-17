@@ -45,5 +45,5 @@
     <string name="format_detailed">Podrobný</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Barva zvýraznění</string>
-    <string name="accent_black_title">Směrem k černé</string>
+    <string name="accent_saturation_title">Sytost</string>
 </resources>

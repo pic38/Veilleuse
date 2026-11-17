@@ -45,5 +45,5 @@
     <string name="format_detailed">Detailliert</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Akzentfarbe</string>
-    <string name="accent_black_title">Richtung Schwarz</string>
+    <string name="accent_saturation_title">Sättigung</string>
 </resources>

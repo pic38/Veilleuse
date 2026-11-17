@@ -72,7 +72,10 @@ class MainActivity : AppCompatActivity() {
     private var brightnessFraction = 0.6f
     private var flashBrightnessFraction = 1f
     private var accentColor: Int = DEFAULT_ACCENT_COLOR
-    private var accentBlackFraction = 0f
+    // Appliqués à la teinte de [accentColor] (voir effectiveAccentColor) : saturation
+    // relative (1 = celle de la pastille, 0 = gris/blanc) et luminosité HSV relative.
+    private var accentSaturation = 1f
+    private var accentBrightness = 1f
     private var timeFormat: TimeFormat = TimeFormat.COMPACT
 
     // Niveau de torche de départ retenu au lancement (dérivé de [flashBrightnessFraction]) :
@@ -182,7 +185,12 @@ class MainActivity : AppCompatActivity() {
         flashBrightnessFraction = prefs.getFloat("flash_brightness_fraction", 1f)
         isProgressive = prefs.getBoolean("progressive", false)
         accentColor = prefs.getInt("accent_color", DEFAULT_ACCENT_COLOR)
-        accentBlackFraction = prefs.getFloat("accent_black_fraction", 0f).coerceAtMost(MAX_ACCENT_BLACK_FRACTION)
+        accentSaturation = prefs.getFloat("accent_saturation", 1f).coerceIn(0f, 1f)
+        // Migration de l'ancien curseur "Vers le noir" : mélanger vers le noir d'une fraction
+        // f revient exactement à multiplier la luminosité HSV par (1 - f).
+        val legacyBlack = prefs.getFloat("accent_black_fraction", 0f)
+        accentBrightness = prefs.getFloat("accent_brightness", 1f - legacyBlack)
+            .coerceIn(MIN_ACCENT_BRIGHTNESS, 1f)
         timeFormat = TimeFormat.entries.firstOrNull { it.name == prefs.getString("time_format", null) }
             ?: TimeFormat.COMPACT
     }
@@ -237,8 +245,10 @@ class MainActivity : AppCompatActivity() {
             .coerceIn(brightnessSlider.valueFrom, brightnessSlider.valueTo)
         flashBrightnessSlider.value = (flashBrightnessFraction * 100f).roundToInt().toFloat()
             .coerceIn(flashBrightnessSlider.valueFrom, flashBrightnessSlider.valueTo)
-        accentBlackSlider.value = (accentBlackFraction * 100f).roundToInt().toFloat()
-            .coerceIn(accentBlackSlider.valueFrom, accentBlackSlider.valueTo)
+        accentSaturationSlider.value = (accentSaturation * 100f).roundToInt().toFloat()
+            .coerceIn(accentSaturationSlider.valueFrom, accentSaturationSlider.valueTo)
+        accentBrightnessSlider.value = (accentBrightness * 100f).roundToInt().toFloat()
+            .coerceIn(accentBrightnessSlider.valueFrom, accentBrightnessSlider.valueTo)
 
         updateDurationLabel(durationSlider.value)
         updateFadeDurationBounds(durationSlider.value) // met aussi à jour le label du fondu
@@ -307,10 +317,16 @@ class MainActivity : AppCompatActivity() {
                 setTorch(false)
             }
         })
-        accentBlackSlider.addOnChangeListener { _, value, _ ->
-            accentBlackFraction = value / 100f
-            prefs.edit().putFloat("accent_black_fraction", accentBlackFraction).apply()
-            applyAccentColor(effectiveAccentColor())
+        accentSaturationSlider.addOnChangeListener { _, value, _ ->
+            accentSaturation = value / 100f
+            prefs.edit().putFloat("accent_saturation", accentSaturation).apply()
+            onAccentAdjusted()
+        }
+        accentBrightnessSlider.addOnChangeListener { _, value, _ ->
+            accentBrightness = value / 100f
+            prefs.edit().putFloat("accent_brightness", accentBrightness)
+                .remove("accent_black_fraction").apply()
+            onAccentAdjusted()
         }
 
         btnStart.setOnClickListener {
@@ -443,7 +459,11 @@ class MainActivity : AppCompatActivity() {
 
         val strokeStates = checkedStateList(color, dim)
         val backgroundStates = checkedStateList(color, Color.TRANSPARENT)
-        val textStates = checkedStateList(oledBlack, textPrimary)
+        // Texte posé sur l'accent (bouton coché, Lancer) : noir ou blanc selon le meilleur
+        // contraste, l'accent pouvant aller du pastel très clair au marron foncé.
+        val onAccent = if (ColorUtils.calculateContrast(oledBlack, color) >=
+            ColorUtils.calculateContrast(textPrimary, color)) oledBlack else textPrimary
+        val textStates = checkedStateList(onAccent, textPrimary)
         val rippleStates = ColorStateList.valueOf(dim)
 
         listOf(
@@ -459,7 +479,7 @@ class MainActivity : AppCompatActivity() {
 
         listOf(
             durationSlider, fadeDurationSlider, warmColorSlider, brightnessSlider,
-            flashBrightnessSlider, accentBlackSlider
+            flashBrightnessSlider, accentSaturationSlider, accentBrightnessSlider
         ).forEach { slider ->
             slider.trackActiveTintList = ColorStateList.valueOf(color)
             slider.thumbTintList = ColorStateList.valueOf(color)
@@ -467,22 +487,35 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnStart.backgroundTintList = ColorStateList.valueOf(color)
+        btnStart.setTextColor(onAccent)
         appTitleText.setTextColor(color)
     }
 
-    /** Couleur d'accentuation réellement appliquée : [accentColor] mélangé vers le noir
-     *  selon [accentBlackFraction] (curseur "vers le noir" de l'écran Réglages). */
-    private fun effectiveAccentColor(color: Int = accentColor): Int =
-        ColorUtils.blendARGB(color, Color.BLACK, accentBlackFraction)
+    /** Couleur d'accentuation réellement appliquée : teinte de [color] (pastille choisie),
+     *  saturation multipliée par [accentSaturation] (pastel) et luminosité HSV multipliée
+     *  par [accentBrightness] (sombre ; ex. orange assombri = marron). */
+    private fun effectiveAccentColor(color: Int = accentColor): Int {
+        val hsv = FloatArray(3)
+        Color.colorToHSV(color, hsv)
+        hsv[1] *= accentSaturation
+        hsv[2] *= accentBrightness
+        return Color.HSVToColor(hsv)
+    }
+
+    private fun onAccentAdjusted() {
+        applyAccentColor(effectiveAccentColor())
+        refreshColorSwatches()
+    }
 
     /** Palette de couleurs réparties sur toute la teinte (façon Image Toolbox), précédée
-     *  du blanc : ronds défilables horizontalement, celui sélectionné est cerclé. */
+     *  du blanc : ronds défilables horizontalement, celui sélectionné est cerclé. Chaque
+     *  rond garde sa couleur de base en tag ; son affichage suit saturation et luminosité
+     *  (voir refreshColorSwatches) pour montrer directement le résultat de chaque teinte. */
     private fun populateColorSwatches(): Unit = with(binding) {
         val container = colorSwatchContainer
         container.removeAllViews()
         val sizePx = (40 * resources.displayMetrics.density).toInt()
         val marginPx = (8 * resources.displayMetrics.density).toInt()
-        val strokePx = (3 * resources.displayMetrics.density).toInt()
 
         val swatchColors = listOf(Color.WHITE) + (0 until ACCENT_SWATCH_COUNT).map { i ->
             val hue = i * 360f / ACCENT_SWATCH_COUNT
@@ -490,30 +523,38 @@ class MainActivity : AppCompatActivity() {
         }
 
         for (swatchColor in swatchColors) {
-            val selected = swatchColor == accentColor
-
-            val swatchDrawable = GradientDrawable().apply {
-                shape = GradientDrawable.OVAL
-                setColor(swatchColor)
-                // Le blanc a besoin d'un anneau de sélection sombre : un anneau blanc
-                // serait invisible sur une pastille blanche.
-                if (selected) setStroke(strokePx, if (swatchColor == Color.WHITE) Color.BLACK else Color.WHITE)
-            }
-
             val swatch = View(this@MainActivity).apply {
+                tag = swatchColor
                 layoutParams = LinearLayout.LayoutParams(sizePx, sizePx).apply {
                     marginStart = marginPx
                     marginEnd = marginPx
                 }
-                background = swatchDrawable
                 setOnClickListener {
                     accentColor = swatchColor
                     prefs.edit().putInt("accent_color", swatchColor).apply()
-                    applyAccentColor(effectiveAccentColor())
-                    populateColorSwatches()
+                    onAccentAdjusted()
                 }
             }
             container.addView(swatch)
+        }
+        refreshColorSwatches()
+    }
+
+    private fun refreshColorSwatches(): Unit = with(binding) {
+        val strokePx = (3 * resources.displayMetrics.density).toInt()
+        for (i in 0 until colorSwatchContainer.childCount) {
+            val swatch = colorSwatchContainer.getChildAt(i)
+            val base = swatch.tag as Int
+            val shown = effectiveAccentColor(base)
+            swatch.background = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setColor(shown)
+                // Anneau de sélection sombre sur une pastille claire (blanc, pastel) : un
+                // anneau blanc y serait invisible.
+                if (base == accentColor) {
+                    setStroke(strokePx, if (ColorUtils.calculateLuminance(shown) > 0.6) Color.BLACK else Color.WHITE)
+                }
+            }
         }
     }
 
@@ -1013,9 +1054,9 @@ class MainActivity : AppCompatActivity() {
         const val DITHER_STEPS = 2
         const val FADE_DURATION_STEPS = 100
         const val ACCENT_SWATCH_COUNT = 25
-        // Doit rester cohérent avec android:valueTo du accentBlackSlider (activity_main.xml) :
-        // au-delà, la couleur d'accentuation devient trop sombre pour rester lisible.
-        const val MAX_ACCENT_BLACK_FRACTION = 0.75f
+        // Doit rester cohérent avec android:valueFrom du accentBrightnessSlider
+        // (activity_main.xml) : en dessous, l'accent devient trop sombre pour rester lisible.
+        const val MIN_ACCENT_BRIGHTNESS = 0.25f
         const val DEFAULT_ACCENT_COLOR = 0xFFFFB300.toInt() // = @color/accent_amber
 
         // Tag BCP-47 -> nom natif (autonyme), volontairement non traduit : un nom de langue

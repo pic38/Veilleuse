@@ -45,7 +45,7 @@
     <string name="format_detailed">Détaillé</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Couleur d\'accentuation</string>
-    <string name="accent_black_title">Vers le noir</string>
+    <string name="accent_saturation_title">Saturation</string>
 
     <!-- Fonction cachée (non visible en usage normal) : journal de plantage,
          accessible par appui long sur versionText. Non traduite dans toutes les

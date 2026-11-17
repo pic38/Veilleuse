@@ -45,5 +45,5 @@
     <string name="format_detailed">مفصّل</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">لون التمييز</string>
-    <string name="accent_black_title">نحو الأسود</string>
+    <string name="accent_saturation_title">التشبع</string>
 </resources>

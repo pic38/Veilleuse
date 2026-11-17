@@ -45,7 +45,7 @@
     <string name="format_detailed">Detailed</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">Accent color</string>
-    <string name="accent_black_title">Toward black</string>
+    <string name="accent_saturation_title">Saturation</string>
 
     <string name="crash_log_dialog_title">Crash log</string>
     <string name="crash_log_none">No crash recorded.</string>

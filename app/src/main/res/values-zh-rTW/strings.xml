@@ -45,5 +45,5 @@
     <string name="format_detailed">詳細</string>
     <string name="format_clock">HH:MM:SS</string>
     <string name="accent_color_title">強調色</string>
-    <string name="accent_black_title">趨向黑色</string>
+    <string name="accent_saturation_title">飽和度</string>
 </resources>
