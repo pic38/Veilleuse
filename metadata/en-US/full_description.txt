@@ -1,5 +1,5 @@
 What's new in version 1.20.0
-* Accent color: the "Toward black" slider is replaced by two sliders, Saturation and Brightness. Pastel, beige or brown tones are now possible, and the swatches update to preview the result.
+* Accent color: adjustable saturation and brightness, with swatches that preview the result.
 * Text on the accent color switches between white and black for the best contrast.
 * Small screens: spacing tightens automatically to avoid needless scrolling; the time format now fits on a single line.
 
@@ -15,7 +15,7 @@ Features:
 
 Settings screen:
 * Time display format: compact, detailed, or HH:MM:SS.
-* UI accent color: palette of hues and white, with adjustable saturation and brightness (pastel, brown...).
+* UI accent color: palette of hues and white, with adjustable saturation and brightness.
 * App language: 26 languages available, independent of the system language.
 
 No Internet permission, no telemetry, fully free software (GPL-3.0).

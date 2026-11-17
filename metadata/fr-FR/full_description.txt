@@ -1,5 +1,5 @@
 Nouveauté de la version 1.20.0
-* Couleur d'accentuation : le curseur "Vers le noir" est remplacé par deux curseurs, Saturation et Luminosité. Tons pastel, beige ou marron désormais possibles, et les pastilles se recolorent pour montrer le résultat.
+* Couleur d'accentuation : saturation et luminosité réglables, avec pastilles qui montrent le résultat.
 * Le texte posé sur la couleur d'accentuation passe en blanc ou en noir selon le meilleur contraste.
 * Petits écrans : les espacements se resserrent automatiquement pour éviter un défilement inutile ; le format de l'heure tient sur une seule ligne.
 
@@ -15,7 +15,7 @@ Fonctionnalités :
 
 Écran de réglages :
 * Format d'affichage de l'heure : compact, détaillé ou HH:MM:SS.
-* Couleur d'accentuation de l'interface : palette de teintes et blanc, avec saturation et luminosité réglables (pastel, marron...).
+* Couleur d'accentuation de l'interface : palette de teintes et blanc, avec saturation et luminosité réglables.
 * Langue de l'application : 26 langues disponibles, indépendamment de la langue du système.
 
 Aucune permission Internet, aucune télémétrie, code entièrement libre (GPL-3.0).
