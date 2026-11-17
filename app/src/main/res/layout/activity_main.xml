@@ -13,7 +13,10 @@
         android:background="@color/oled_black"
         android:fillViewport="true">
 
+        <!-- Espacements verticaux réduits dynamiquement sur les petits écrans pour éviter
+             le défilement (voir VerticalAutoFit dans MainActivity). -->
         <LinearLayout
+            android:id="@+id/setupContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -250,7 +253,10 @@
         android:fillViewport="true"
         android:visibility="gone">
 
+        <!-- Espacements verticaux réduits dynamiquement sur les petits écrans pour éviter
+             le défilement (voir VerticalAutoFit dans MainActivity). -->
         <LinearLayout
+            android:id="@+id/settingsContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

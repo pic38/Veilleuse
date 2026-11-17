@@ -25,6 +25,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
+import android.widget.Space
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -128,6 +129,11 @@ class MainActivity : AppCompatActivity() {
             view.layoutParams = lp
             insets
         }
+
+        // L'écran principal a beaucoup de contenu incompressible (curseurs, boutons) quand
+        // toutes les options sont affichées : il faut pouvoir serrer bien davantage.
+        VerticalAutoFit(binding.setupContainer, binding.setupContent, minScale = 0.05f)
+        VerticalAutoFit(binding.settingsContainer, binding.settingsContent, minScale = 0.35f)
 
         prefs = getSharedPreferences("veilleuse_prefs", Context.MODE_PRIVATE)
         detectFlash()
@@ -926,7 +932,82 @@ class MainActivity : AppCompatActivity() {
         unregisterScreenOffReceiver()
     }
 
+    /**
+     * Sur les petits écrans (ex. OnePlus One, ~570dp de hauteur utile), un écran peut
+     * dépasser légèrement et défiler. Plutôt qu'un seuil fixe, on réduit les espacements
+     * verticaux (marges haut/bas des enfants directs de [content], son padding vertical et
+     * la hauteur des Space fixes) juste assez pour tout faire tenir, sans descendre sous
+     * [minScale] ; si ça ne suffit pas, on ne touche à rien (le défilement reste).
+     * Sur les grands écrans, rien ne change (échelle 1).
+     *
+     * La hauteur « naturelle » est recalculée à partir des valeurs d'origine et des enfants
+     * visibles (les Space à poids, qui absorbent l'espace libre, comptent pour 0) : le
+     * calcul ne dépend pas de l'échelle déjà appliquée, il est donc stable et réversible
+     * (rotation, options affichées/masquées...).
+     */
+    private class VerticalAutoFit(
+        private val scroll: View,
+        private val content: LinearLayout,
+        private val minScale: Float,
+    ) {
+        private class Base(val top: Int, val bottom: Int, val spaceHeight: Int)
+
+        private val base = List(content.childCount) { i ->
+            val child = content.getChildAt(i)
+            val lp = child.layoutParams as LinearLayout.LayoutParams
+            val fixedSpace = child is Space && lp.weight == 0f && lp.height > 0
+            Base(lp.topMargin, lp.bottomMargin, if (fixedSpace) lp.height else 0)
+        }
+        private val basePadding = content.paddingTop to content.paddingBottom
+        private var scale = 1f
+
+        init {
+            scroll.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> scroll.post { fit() } }
+        }
+
+        private fun fit() {
+            if (scroll.visibility != View.VISIBLE || scroll.height == 0) return
+            var natural = basePadding.first + basePadding.second
+            var shrinkable = natural
+            base.forEachIndexed { i, b ->
+                val child = content.getChildAt(i)
+                if (child.visibility == View.GONE) return@forEachIndexed
+                val weighted = (child.layoutParams as LinearLayout.LayoutParams).weight > 0f
+                val height = when {
+                    b.spaceHeight > 0 -> b.spaceHeight
+                    weighted -> 0
+                    else -> child.measuredHeight
+                }
+                natural += height + b.top + b.bottom
+                shrinkable += b.top + b.bottom + b.spaceHeight
+            }
+            val available = scroll.height - scroll.paddingTop - scroll.paddingBottom
+            val overflow = natural - available
+            // Si même à minScale le contenu ne tient pas, serrer ne supprimerait pas le
+            // défilement et dégraderait l'affichage pour rien : on garde l'échelle 1.
+            val needed = if (shrinkable == 0) 0f else 1f - overflow.toFloat() / shrinkable
+            val newScale = if (overflow <= 0 || needed < minScale) 1f else needed
+            if (newScale == scale) return
+            scale = newScale
+
+            // Arrondi vers le bas : la réduction totale couvre toujours le dépassement (un
+            // arrondi au plus proche pouvait laisser 1px de trop, donc un défilement).
+            fun s(px: Int) = (px * newScale).toInt()
+            content.setPadding(content.paddingLeft, s(basePadding.first),
+                content.paddingRight, s(basePadding.second))
+            base.forEachIndexed { i, b ->
+                val child = content.getChildAt(i)
+                val lp = child.layoutParams as LinearLayout.LayoutParams
+                lp.topMargin = s(b.top)
+                lp.bottomMargin = s(b.bottom)
+                if (b.spaceHeight > 0) lp.height = s(b.spaceHeight)
+                child.layoutParams = lp
+            }
+        }
+    }
+
     private companion object {
+
         const val FADE_TICK_MS_SCREEN = 5L
         const val FADE_TICK_MS_FLASH = 50L
         const val DITHER_STEPS = 2
